@@ -4,12 +4,12 @@
 //     Laufzeitversion: 4.0.30319.42000
 //
 //     Änderungen an dieser Datei können fehlerhaftes Verhalten verursachen und gehen verloren, wenn
-//     der Code erneut generiert wird.
+//     der Code neu generiert wird.
 // </auto-generated>
 //------------------------------------------------------------------------------
 
 
-namespace Game_of_Life.Properties
+namespace Game_of_Life_Win_Form.Properties
 {
     /// <summary>
     ///   Eine stark typisierte Ressourcenklasse zum Suchen von lokalisierten Zeichenfolgen usw.
@@ -43,7 +43,7 @@ namespace Game_of_Life.Properties
             {
                 if ((resourceMan == null))
                 {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Game_of_Life.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Game_of_Life_Win_Form.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

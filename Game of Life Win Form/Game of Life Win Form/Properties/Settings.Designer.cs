@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 
 
-namespace Game_of_Life.Properties
+namespace Game_of_Life_Win_Form.Properties
 {
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "11.0.0.0")]
