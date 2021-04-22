@@ -29,51 +29,38 @@ namespace Game_of_Life_Win_Form
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.panel1.SuspendLayout();
+            this.Panel_matchfield = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
-            // panel1
+            // Panel_matchfield
             // 
-            this.panel1.AutoScroll = true;
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Location = new System.Drawing.Point(24, 12);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(753, 381);
-            this.panel1.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
-            this.button1.FlatAppearance.BorderSize = 500;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.button1.ForeColor = System.Drawing.Color.Transparent;
-            this.button1.Location = new System.Drawing.Point(233, 71);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(25, 25);
-            this.button1.TabIndex = 0;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.Panel_matchfield.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Panel_matchfield.AutoScroll = true;
+            this.Panel_matchfield.BackColor = System.Drawing.Color.Transparent;
+            this.Panel_matchfield.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Panel_matchfield.Location = new System.Drawing.Point(9, 9);
+            this.Panel_matchfield.Margin = new System.Windows.Forms.Padding(0);
+            this.Panel_matchfield.Name = "Panel_matchfield";
+            this.Panel_matchfield.Size = new System.Drawing.Size(785, 481);
+            this.Panel_matchfield.TabIndex = 0;
             // 
             // Matchfield
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(929, 550);
+            this.Controls.Add(this.Panel_matchfield);
             this.Name = "Matchfield";
-            this.Text = "matchfield";
-            this.panel1.ResumeLayout(false);
+            this.Text = "Spielfeld";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Resize += new System.EventHandler(this.Matchfield_Resize);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Panel Panel_matchfield;
     }
 }

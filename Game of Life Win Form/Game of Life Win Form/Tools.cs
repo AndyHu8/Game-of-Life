@@ -10,16 +10,16 @@ using System.Windows.Forms;
 
 namespace Game_of_Life_Win_Form
 {
-    public partial class Menu_newGame : Form
+    public partial class Tools : Form
     {
-        public Menu_newGame()
+        public Tools()
         {
             InitializeComponent();
         }
 
-        private void btn_back_to_menu_main_Click(object sender, EventArgs e)
+        private void Btn_cell_Click(object sender, EventArgs e)
         {
-            //Menu_main.();
+            Btn_cell.BackColor = Btn_cell.BackColor == Color.Red ? Color.Transparent : Color.Red;
         }
     }
 }
