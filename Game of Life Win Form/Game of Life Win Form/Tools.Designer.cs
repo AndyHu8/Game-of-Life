@@ -1,5 +1,4 @@
-﻿
-namespace Game_of_Life_Win_Form
+﻿namespace Game_of_Life_Win_Form
 {
     partial class Tools
     {
@@ -35,19 +34,15 @@ namespace Game_of_Life_Win_Form
             // Btn_cell
             // 
             this.Btn_cell.BackColor = System.Drawing.Color.Transparent;
-            this.Btn_cell.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.Btn_cell.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.Btn_cell.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
-            this.Btn_cell.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.Btn_cell.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.Btn_cell.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
             this.Btn_cell.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btn_cell.ForeColor = System.Drawing.Color.Transparent;
-            this.Btn_cell.Location = new System.Drawing.Point(-1, -1);
-            this.Btn_cell.Margin = new System.Windows.Forms.Padding(0);
+            this.Btn_cell.Location = new System.Drawing.Point(12, 12);
             this.Btn_cell.Name = "Btn_cell";
             this.Btn_cell.Size = new System.Drawing.Size(25, 25);
             this.Btn_cell.TabIndex = 0;
             this.Btn_cell.UseVisualStyleBackColor = false;
-            this.Btn_cell.Click += new System.EventHandler(this.Btn_cell_Click);
             // 
             // Tools
             // 

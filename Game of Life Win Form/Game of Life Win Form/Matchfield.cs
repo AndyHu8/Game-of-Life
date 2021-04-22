@@ -24,7 +24,7 @@ namespace Game_of_Life_Win_Form
                 {
                     var btn_cell = tools.Btn_cell;
 
-                    btn_cell.Location = new Point(j * btn_cell.Width, i * btn_cell.Height);
+                    btn_cell.Location.Offset(j * btn_cell.Width, i * btn_cell.Height);
                     Panel_matchfield.Controls.Add(btn_cell);
                 }
             }

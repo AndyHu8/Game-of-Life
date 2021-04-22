@@ -64,7 +64,7 @@ namespace Game_of_Life_Win_Form
             this.btn_load_game.Text = "Spiel laden";
             this.btn_load_game.UseVisualStyleBackColor = true;
             // 
-            // menu_main
+            // Menu_main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -72,8 +72,10 @@ namespace Game_of_Life_Win_Form
             this.Controls.Add(this.btn_load_game);
             this.Controls.Add(this.lbl_title);
             this.Controls.Add(this.btn_new_game_menu_newGame);
-            this.Name = "menu_main";
+            this.Name = "Menu_main";
             this.Text = "Hauptmenü";
+            this.DpiChanged += new System.Windows.Forms.DpiChangedEventHandler(this.Menu_main_DpiChanged);
+            this.DpiChangedBeforeParent += new System.EventHandler(this.Menu_main_DpiChangedBeforeParent);
             this.ResumeLayout(false);
             this.PerformLayout();
 

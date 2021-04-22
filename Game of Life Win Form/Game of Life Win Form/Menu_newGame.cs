@@ -48,7 +48,7 @@ namespace Game_of_Life_Win_Form
 
         private void btn_spielfeld_aufrufen_Click(object sender, EventArgs e)
         {
-
+            Menuing.OpenForm(new Matchfield(), this);
         }
 
         private void btn_start_game_Click(object sender, EventArgs e)

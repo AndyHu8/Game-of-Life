@@ -22,5 +22,15 @@ namespace Game_of_Life_Win_Form
             Menuing.OpenForm(new Menu_newGame(), this);
         }
 
+        private void Menu_main_DpiChanged(object sender, DpiChangedEventArgs e)
+        {
+            Menuing.CurrentForm = this;
+            Menuing.RepositionComponents();
+        }
+
+        private void Menu_main_DpiChangedBeforeParent(object sender, EventArgs e)
+        {
+            Menuing.PreviousSize = Size;
+        }
     }
 }
