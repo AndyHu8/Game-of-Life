@@ -50,12 +50,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Tools.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Tools.Designer.cs">
-      <DependentUpon>Tools.cs</DependentUpon>
-    </Compile>
     <Compile Include="Matchfield.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,9 +73,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Tools.resx">
-      <DependentUpon>Tools.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Matchfield.resx">
       <DependentUpon>Matchfield.cs</DependentUpon>
     </EmbeddedResource>
