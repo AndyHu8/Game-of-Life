@@ -12,24 +12,25 @@ namespace Game_of_Life_Win_Form
 {
     public partial class Matchfield : Form
     {
-        private Tools tools { get { return new Tools(); } }
+        private Tools Tools { get { return new Tools(); } }
 
-        public Matchfield()
+        public Matchfield(int x, int y)
         {
             InitializeComponent();
 
-            for (var i = 0; i < 50; i++)
+            for (var i = 0; i < y; i++)
             {
-                for (var j = 0; j < 50; j++)
+                for (var j = 0; j < x; j++)
                 {
-                    var btn_cell = tools.Btn_cell;
+                    var btn_cell = new Tools().Btn_cell;
 
-                    btn_cell.Location.Offset(j * btn_cell.Width, i * btn_cell.Height);
+                    btn_cell.Location = new Point(j * btn_cell.Width, i * btn_cell.Height);
                     Panel_matchfield.Controls.Add(btn_cell);
                 }
             }
-            Panel_matchfield.HorizontalScroll.SmallChange = tools.Btn_cell.Width;
-            Panel_matchfield.VerticalScroll.SmallChange = tools.Btn_cell.Height;
+
+            Panel_matchfield.HorizontalScroll.SmallChange = Tools.Btn_cell.Width;
+            Panel_matchfield.VerticalScroll.SmallChange = Tools.Btn_cell.Height;
         }
 
         private void Matchfield_Resize(object sender, EventArgs e)

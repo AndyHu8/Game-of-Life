@@ -22,23 +22,41 @@ namespace Game_of_Life_Win_Form
             oldForm.Hide();
         }
 
-        public static void RepositionComponents()
-        {
-            var components = CurrentForm.Controls;
+        //public static void RepositionComponents()
+        //{
+        //    var components = CurrentForm.Controls;
 
-            foreach (var component in components)
-            {
-                switch (component)
-                {
-                    case Button button:
-                        var x_offset = CurrentForm.Size.Width - PreviousSize.Width;
-                        var y_offset = CurrentForm.Size.Height - PreviousSize.Height;
-                        button.Location.Offset(x_offset, y_offset);
-                        break;
-                    default:
-                        throw new Exception("Not implemented yet");
-                }
-            }
-        }
+        //    var x_offset = (CurrentForm.Size.Width - PreviousSize.Width) / 2;
+        //    var y_offset = (CurrentForm.Size.Height - PreviousSize.Height) / 2;
+
+        //    foreach (var component in components)
+        //    {
+        //        switch (component)
+        //        {
+        //            case Button button:
+        //                button.Location = new Point(button.Location.X + x_offset, button.Location.Y + y_offset);
+        //                break;
+        //            case Label label:
+        //                //label.Location = new Point(label.Location.X + x_offset, label.Location.Y + y_offset);
+        //                break;
+        //            default:
+        //                throw new Exception("Not implemented yet");
+        //        }
+        //    }
+        //}
+
+        //public static void ResizeForm(object sender, EventArgs e)
+        //{
+        //    var form = sender as Form;
+        //    CurrentForm = form;
+        //    RepositionComponents();
+        //    PreviousSize = form.Size;
+        //}
+
+        //public static void LoadForm(object sender, EventArgs e)
+        //{
+        //    var form = sender as Form;
+        //    PreviousSize = form.Size;
+        //}
     }
 }

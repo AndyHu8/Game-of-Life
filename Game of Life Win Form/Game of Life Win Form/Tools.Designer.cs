@@ -43,6 +43,7 @@
             this.Btn_cell.Size = new System.Drawing.Size(25, 25);
             this.Btn_cell.TabIndex = 0;
             this.Btn_cell.UseVisualStyleBackColor = false;
+            this.Btn_cell.Click += new System.EventHandler(this.Btn_cell_Click);
             // 
             // Tools
             // 

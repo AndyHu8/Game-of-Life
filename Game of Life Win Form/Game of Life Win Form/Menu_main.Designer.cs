@@ -36,7 +36,8 @@ namespace Game_of_Life_Win_Form
             // 
             // btn_new_game_menu_newGame
             // 
-            this.btn_new_game_menu_newGame.Location = new System.Drawing.Point(271, 197);
+            this.btn_new_game_menu_newGame.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btn_new_game_menu_newGame.Location = new System.Drawing.Point(260, 197);
             this.btn_new_game_menu_newGame.Name = "btn_new_game_menu_newGame";
             this.btn_new_game_menu_newGame.Size = new System.Drawing.Size(131, 66);
             this.btn_new_game_menu_newGame.TabIndex = 0;
@@ -46,17 +47,18 @@ namespace Game_of_Life_Win_Form
             // 
             // lbl_title
             // 
-            this.lbl_title.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lbl_title.AutoSize = true;
+            this.lbl_title.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_title.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_title.Location = new System.Drawing.Point(261, 9);
             this.lbl_title.Name = "lbl_title";
             this.lbl_title.Size = new System.Drawing.Size(298, 55);
             this.lbl_title.TabIndex = 1;
             this.lbl_title.Text = "Game of Life";
+            this.lbl_title.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // btn_load_game
             // 
+            this.btn_load_game.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btn_load_game.Location = new System.Drawing.Point(428, 197);
             this.btn_load_game.Name = "btn_load_game";
             this.btn_load_game.Size = new System.Drawing.Size(131, 66);
@@ -74,10 +76,7 @@ namespace Game_of_Life_Win_Form
             this.Controls.Add(this.btn_new_game_menu_newGame);
             this.Name = "Menu_main";
             this.Text = "Hauptmenü";
-            this.DpiChanged += new System.Windows.Forms.DpiChangedEventHandler(this.Menu_main_DpiChanged);
-            this.DpiChangedBeforeParent += new System.EventHandler(this.Menu_main_DpiChangedBeforeParent);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

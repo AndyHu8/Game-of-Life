@@ -16,5 +16,10 @@ namespace Game_of_Life_Win_Form
         {
             InitializeComponent();
         }
+
+        private void Btn_cell_Click(object sender, EventArgs e)
+        {
+            Btn_cell.BackColor = Btn_cell.BackColor == Color.Red ? Color.Transparent : Color.Red;
+        }
     }
 }

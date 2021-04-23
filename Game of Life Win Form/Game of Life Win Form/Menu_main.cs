@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Game_of_Life_Win_Form
 {
-    public partial class Menu_main : Form
+    public partial class Menu_main : Menuing
     {
         public Menu_main()
         {
@@ -19,18 +19,8 @@ namespace Game_of_Life_Win_Form
 
         private void btn_new_game_menu_newGame_Click(object sender, EventArgs e)
         {
-            Menuing.OpenForm(new Menu_newGame(), this);
+            OpenForm(new Menu_newGame(), this);
         }
 
-        private void Menu_main_DpiChanged(object sender, DpiChangedEventArgs e)
-        {
-            Menuing.CurrentForm = this;
-            Menuing.RepositionComponents();
-        }
-
-        private void Menu_main_DpiChangedBeforeParent(object sender, EventArgs e)
-        {
-            Menuing.PreviousSize = Size;
-        }
     }
 }
