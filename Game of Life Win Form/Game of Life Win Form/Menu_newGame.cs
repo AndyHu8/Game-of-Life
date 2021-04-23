@@ -34,12 +34,12 @@ namespace Game_of_Life_Win_Form
 
         private void Y_Input_TextChanged(object sender, EventArgs e)
         {
-            btn_eingaben_uebernehmen.Enabled = (y_previousText != Y_Input.Text || x_previousText != X_Input.Text) && y_previousText != "" ? true : false;
+            btn_eingaben_uebernehmen.Enabled = (y_previousText != Y_Input.Text || x_previousText != X_Input.Text) && Y_Input.Text != "" ? true : false;
         }
 
         private void X_Input_TextChanged(object sender, EventArgs e)
         {
-            btn_eingaben_uebernehmen.Enabled = (x_previousText != X_Input.Text || y_previousText != Y_Input.Text) && x_previousText != "" ? true : false;
+            btn_eingaben_uebernehmen.Enabled = (x_previousText != X_Input.Text || y_previousText != Y_Input.Text) && X_Input.Text != "" ? true : false;
         }
 
         private void btn_spielfeld_zufall_Click(object sender, EventArgs e)
@@ -58,6 +58,7 @@ namespace Game_of_Life_Win_Form
             x_previousText = X_Input.Text;
 
             btn_eingaben_uebernehmen.Enabled = false;
+            Matchfield.IsSaved = false;
         }
 
         private void btn_zellen_zufall_Click(object sender, EventArgs e)
@@ -67,7 +68,7 @@ namespace Game_of_Life_Win_Form
 
         private void btn_spielfeld_aufrufen_Click(object sender, EventArgs e)
         {
-            Menuing.OpenForm(new Matchfield(X_Zahl, Y_Zahl), this);
+            Menuing.OpenForm(Matchfield.IsSaved ? Matchfield.CurrentForm : new Matchfield(X_Zahl, Y_Zahl), this);
         }
 
         private void btn_start_game_Click(object sender, EventArgs e)

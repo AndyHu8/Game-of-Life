@@ -12,31 +12,59 @@ namespace Game_of_Life_Win_Form
 {
     public partial class Matchfield : Form
     {
-        private Tools Tools { get { return new Tools(); } }
+        public static Form CurrentForm { get; set; }
+        public static bool IsSaved { get; set; }
 
         public Matchfield(int x, int y)
         {
             InitializeComponent();
 
+            var btn_cell = new Tools().Btn_cell;
+            var totalWidthCenter = x * btn_cell.Width / 2;
+            var totalHeigthCenter = y * btn_cell.Height / 2;
+            var panelWidthCenter = Panel_matchfield.Width / 2;
+            var panelHeightCenter = Panel_matchfield.Height / 2;
+
             for (var i = 0; i < y; i++)
             {
                 for (var j = 0; j < x; j++)
                 {
-                    var btn_cell = new Tools().Btn_cell;
+                    btn_cell = new Tools().Btn_cell;
 
-                    btn_cell.Location = new Point(j * btn_cell.Width, i * btn_cell.Height);
+                    btn_cell.Location = new Point(panelWidthCenter - totalWidthCenter + j * btn_cell.Width, panelHeightCenter - totalHeigthCenter + i * btn_cell.Height);
                     Panel_matchfield.Controls.Add(btn_cell);
                 }
             }
 
-            Panel_matchfield.HorizontalScroll.SmallChange = Tools.Btn_cell.Width;
-            Panel_matchfield.VerticalScroll.SmallChange = Tools.Btn_cell.Height;
+            Panel_matchfield.HorizontalScroll.SmallChange = btn_cell.Width;
+            Panel_matchfield.VerticalScroll.SmallChange = btn_cell.Height;
         }
 
         private void Matchfield_Resize(object sender, EventArgs e)
         {
-            Panel_matchfield.Width = this.Width - 34;
-            Panel_matchfield.Height = this.Height - 108;
+            var width = Width - 34;
+            Panel_matchfield.Width = width;
+            Panel_matchfield.Height = Height - 178;
+            Btn_back.Width = width;
+            Btn_reset.Width = width;
+        }
+
+        private void Btn_back_Click(object sender, EventArgs e)
+        {
+            IsSaved = true;
+            CurrentForm = this;
+
+            Menuing.OpenForm(Menuing.PreviousForm, this);
+        }
+
+        private void Btn_reset_Click(object sender, EventArgs e)
+        {
+            foreach (var control in Panel_matchfield.Controls)
+            {
+                var con = control as Button;
+
+                con.BackColor = Color.Transparent;
+            }
         }
     }
 }

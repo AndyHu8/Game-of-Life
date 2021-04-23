@@ -11,13 +11,16 @@ namespace Game_of_Life_Win_Form
     public class Menuing : Form
     {
         public static Form CurrentForm { get; set; }
-        public static Size PreviousSize { get; set; }
+        public static Form PreviousForm { get; set; }
 
         public static void OpenForm(Form newForm, Form oldForm)
         {
-            CurrentForm = CurrentForm != newForm ? newForm : CurrentForm;
+            CurrentForm = newForm;
+            PreviousForm = oldForm;
             CurrentForm.Location = oldForm.Location;
             CurrentForm.StartPosition = FormStartPosition.Manual;
+            CurrentForm.WindowState = oldForm.WindowState;
+            CurrentForm.Size = oldForm.Size;
             CurrentForm.Show();
             oldForm.Hide();
         }
@@ -26,8 +29,8 @@ namespace Game_of_Life_Win_Form
         //{
         //    var components = CurrentForm.Controls;
 
-        //    var x_offset = (CurrentForm.Size.Width - PreviousSize.Width) / 2;
-        //    var y_offset = (CurrentForm.Size.Height - PreviousSize.Height) / 2;
+        //    var x_offset = (CurrentForm.Size.Width - PreviousForm.Size.Width) / 2;
+        //    var y_offset = (CurrentForm.Size.Height - PreviousForm.Size.Height) / 2;
 
         //    foreach (var component in components)
         //    {
@@ -38,6 +41,9 @@ namespace Game_of_Life_Win_Form
         //                break;
         //            case Label label:
         //                //label.Location = new Point(label.Location.X + x_offset, label.Location.Y + y_offset);
+        //                break;
+        //            case Panel panel:
+        //                panel.Location = new Point(panel.Location.X + x_offset, panel.Location.Y + y_offset);
         //                break;
         //            default:
         //                throw new Exception("Not implemented yet");
@@ -50,13 +56,13 @@ namespace Game_of_Life_Win_Form
         //    var form = sender as Form;
         //    CurrentForm = form;
         //    RepositionComponents();
-        //    PreviousSize = form.Size;
+        //    PreviousForm.Size = form.Size;
         //}
 
         //public static void LoadForm(object sender, EventArgs e)
         //{
         //    var form = sender as Form;
-        //    PreviousSize = form.Size;
+        //    PreviousForm.Size = form.Size;
         //}
     }
 }
