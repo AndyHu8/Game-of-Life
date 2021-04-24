@@ -19,8 +19,12 @@ namespace Game_of_Life_Win_Form
 
         private void btn_new_game_menu_newGame_Click(object sender, EventArgs e)
         {
-            OpenForm(new Menu_newGame(), this);
+            OpenForm(Menu_newGame, Menu_main = this);
         }
 
+        private void Btn_exit_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

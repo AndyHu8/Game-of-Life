@@ -10,18 +10,16 @@ namespace Game_of_Life_Win_Form
 {
     public class Menuing : Form
     {
-        public static Form CurrentForm { get; set; }
-        public static Form PreviousForm { get; set; }
+
+        public static Menu_main Menu_main = new Menu_main();
+        public static Menu_newGame Menu_newGame = new Menu_newGame();
+        public static Matchfield Matchfield = new Matchfield();
+        public static Menu_startGame Menu_startGame = new Menu_startGame();
 
         public static void OpenForm(Form newForm, Form oldForm)
         {
-            CurrentForm = newForm;
-            PreviousForm = oldForm;
-            CurrentForm.Location = oldForm.Location;
-            CurrentForm.StartPosition = FormStartPosition.Manual;
-            CurrentForm.WindowState = oldForm.WindowState;
-            CurrentForm.Size = oldForm.Size;
-            CurrentForm.Show();
+            newForm.WindowState = oldForm.WindowState;
+            newForm.Show();
             oldForm.Hide();
         }
 
