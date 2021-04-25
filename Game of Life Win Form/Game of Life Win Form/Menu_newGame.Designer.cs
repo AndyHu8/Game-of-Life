@@ -104,7 +104,6 @@ namespace Game_of_Life_Win_Form
             this.X_Input.Name = "X_Input";
             this.X_Input.Size = new System.Drawing.Size(100, 20);
             this.X_Input.TabIndex = 4;
-            this.X_Input.Text = "0";
             this.X_Input.TextChanged += new System.EventHandler(this.X_Input_TextChanged);
             this.X_Input.Leave += new System.EventHandler(this.X_Input_Leave);
             // 
@@ -126,7 +125,6 @@ namespace Game_of_Life_Win_Form
             this.Y_Input.Name = "Y_Input";
             this.Y_Input.Size = new System.Drawing.Size(100, 20);
             this.Y_Input.TabIndex = 6;
-            this.Y_Input.Text = "0";
             this.Y_Input.TextChanged += new System.EventHandler(this.Y_Input_TextChanged);
             this.Y_Input.Leave += new System.EventHandler(this.Y_Input_Leave);
             // 

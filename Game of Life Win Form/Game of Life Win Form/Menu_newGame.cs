@@ -114,11 +114,12 @@ namespace Game_of_Life_Win_Form
 
         private bool Input_validation()
         {
-            Label_inserted_string.Visible = !int.TryParse(Y_Input.Text, out y_number) || !int.TryParse(X_Input.Text, out x_number);
+            bool isIntX = int.TryParse(X_Input.Text, out x_number);
+            bool isIntY = int.TryParse(Y_Input.Text, out y_number);
+            bool isGreaterZeroX = x_number > 0;
+            bool isGreaterZeroY = y_number > 0;
 
-            if (x_number > 0 && y_number > 0 && !Label_inserted_string.Visible) return true;
-
-            return false;
+            return !(Label_inserted_string.Visible = isIntX && isIntY && isGreaterZeroX && isGreaterZeroY);
         }
 
         private void btn_eingaben_uebernehmen_EnabledChanged(object sender, EventArgs e)
