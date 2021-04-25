@@ -164,6 +164,7 @@ namespace Game_of_Life_Win_Form
             this.btn_eingaben_uebernehmen.UseVisualStyleBackColor = true;
             this.btn_eingaben_uebernehmen.EnabledChanged += new System.EventHandler(this.btn_eingaben_uebernehmen_EnabledChanged);
             this.btn_eingaben_uebernehmen.Click += new System.EventHandler(this.btn_eingaben_uebernehmen_Click);
+            this.btn_eingaben_uebernehmen.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btn_eingaben_uebernehmen_MouseDown);
             // 
             // label6
             // 
@@ -197,6 +198,7 @@ namespace Game_of_Life_Win_Form
             this.btn_zellen_zufall.Text = "Zufällig generieren";
             this.btn_zellen_zufall.UseVisualStyleBackColor = true;
             this.btn_zellen_zufall.Click += new System.EventHandler(this.btn_zellen_zufall_Click);
+            this.btn_zellen_zufall.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btn_zellen_zufall_MouseDown);
             // 
             // label8
             // 

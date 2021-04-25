@@ -36,6 +36,9 @@ namespace Game_of_Life_Win_Form
             // 
             // Panel_matchfield
             // 
+            this.Panel_matchfield.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Panel_matchfield.AutoScroll = true;
             this.Panel_matchfield.BackColor = System.Drawing.Color.Transparent;
             this.Panel_matchfield.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -47,7 +50,8 @@ namespace Game_of_Life_Win_Form
             // 
             // Btn_back
             // 
-            this.Btn_back.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.Btn_back.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Btn_back.AutoSize = true;
             this.Btn_back.Location = new System.Drawing.Point(9, 391);
             this.Btn_back.Margin = new System.Windows.Forms.Padding(0);
@@ -60,7 +64,8 @@ namespace Game_of_Life_Win_Form
             // 
             // Btn_reset
             // 
-            this.Btn_reset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.Btn_reset.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Btn_reset.AutoSize = true;
             this.Btn_reset.Location = new System.Drawing.Point(9, 330);
             this.Btn_reset.Margin = new System.Windows.Forms.Padding(0);

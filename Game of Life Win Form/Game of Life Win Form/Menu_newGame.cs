@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Threading;
+using System.Windows.Forms;
 
 namespace Game_of_Life_Win_Form
 {
@@ -57,26 +53,20 @@ namespace Game_of_Life_Win_Form
 
         private void btn_eingaben_uebernehmen_Click(object sender, EventArgs e)
         {
-            Label_inserted_string.Visible = false;
-
             y_previousText = Y_Input.Text;
             x_previousText = X_Input.Text;
 
             btn_eingaben_uebernehmen.Enabled = false;
 
-            Label_size_load.Visible = true;
-
-            new Matchfield(x_number, y_number);
+            Matchfield = new Matchfield(x_number, y_number);
 
             Label_size_load.Visible = false;
-
             Label_input_confirmed.Visible = true;
         }
 
         private void btn_zellen_zufall_Click(object sender, EventArgs e)
         {
             Label_loading_done.Visible = false;
-            Label_random_load.Visible = true;
 
             Matchfield.Btn_reset_Click(null, null);
 
@@ -139,6 +129,17 @@ namespace Game_of_Life_Win_Form
         private void Menu_newGame_VisibleChanged(object sender, EventArgs e)
         {
             Label_loading_done.Visible = false;
+        }
+
+        private void btn_eingaben_uebernehmen_MouseDown(object sender, MouseEventArgs e)
+        {
+            Label_size_load.Visible = true;
+            Label_inserted_string.Visible = false;
+        }
+
+        private void btn_zellen_zufall_MouseDown(object sender, MouseEventArgs e)
+        {
+            Label_random_load.Visible = true;
         }
     }
 }

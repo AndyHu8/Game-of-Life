@@ -38,11 +38,11 @@ namespace Game_of_Life_Win_Form
 
         private void Matchfield_Resize(object sender, EventArgs e)
         {
-            var width = Width - 34;
-            Panel_matchfield.Width = width;
-            Panel_matchfield.Height = Height - 178;
-            Btn_back.Width = width;
-            Btn_reset.Width = width;
+            //var width = Width - 34;
+            //Panel_matchfield.Width = width;
+            //Panel_matchfield.Height = Height - 178;
+            //Btn_back.Width = width;
+            //Btn_reset.Width = width;
 
             //RepositionButtons(x, y, null);
         }
