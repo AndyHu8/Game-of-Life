@@ -50,6 +50,7 @@ namespace Game_of_Life_Win_Form
             this.Label_random_load = new System.Windows.Forms.Label();
             this.Label_loading_done = new System.Windows.Forms.Label();
             this.Label_size_load = new System.Windows.Forms.Label();
+            this.Label_matchfield_zero = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btn_back_to_menu_main
@@ -296,11 +297,25 @@ namespace Game_of_Life_Win_Form
             this.Label_size_load.Text = "Lädt ...";
             this.Label_size_load.Visible = false;
             // 
+            // Label_matchfield_zero
+            // 
+            this.Label_matchfield_zero.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Label_matchfield_zero.AutoSize = true;
+            this.Label_matchfield_zero.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_matchfield_zero.ForeColor = System.Drawing.Color.Red;
+            this.Label_matchfield_zero.Location = new System.Drawing.Point(160, 322);
+            this.Label_matchfield_zero.Name = "Label_matchfield_zero";
+            this.Label_matchfield_zero.Size = new System.Drawing.Size(157, 16);
+            this.Label_matchfield_zero.TabIndex = 21;
+            this.Label_matchfield_zero.Text = "Das Spielfeld ist leer!";
+            this.Label_matchfield_zero.Visible = false;
+            // 
             // Menu_newGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Label_matchfield_zero);
             this.Controls.Add(this.Label_size_load);
             this.Controls.Add(this.Label_loading_done);
             this.Controls.Add(this.Label_random_load);
@@ -355,5 +370,6 @@ namespace Game_of_Life_Win_Form
         private System.Windows.Forms.Label Label_random_load;
         private System.Windows.Forms.Label Label_loading_done;
         private System.Windows.Forms.Label Label_size_load;
+        private System.Windows.Forms.Label Label_matchfield_zero;
     }
 }

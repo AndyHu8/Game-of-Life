@@ -5,7 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Game_of_Life_Win_Form
@@ -14,6 +14,8 @@ namespace Game_of_Life_Win_Form
     {
         private int x;
         private int y;
+        private bool isRunning;
+        private Panel currentPanel;
 
         public Menu_startGame()
         {
@@ -27,89 +29,198 @@ namespace Game_of_Life_Win_Form
             this.x = x;
             this.y = y;
 
-            Panel_matchfield = Matchfield.CurrentMatchfield;
+            currentPanel = Matchfield.CurrentMatchfield;
 
-            foreach (var button in Panel_matchfield.Controls.Cast<Button>())
-            {
-                button.FlatAppearance.MouseDownBackColor = Color.Transparent;
-                button.FlatAppearance.MouseOverBackColor = Color.Transparent;
-                //button.CausesValidation = false;
-            }
+            CreateField();
+            //Panel_matchfield = Matchfield.CurrentMatchfield;
+            //foreach (var button in Panel_matchfield.Controls.Cast<Button>())
+            //{
+            //    button.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            //    button.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            //    //button.CausesValidation = false;
+            //}
 
 
         }
 
-        private void GameLogic()
+        private void CreateField()
+        {
+            Panel_matchfield.Controls.Clear();
+
+            currentPanel.Controls.Cast<Button>().ToList().ForEach(x =>
+            {
+                Panel_matchfield.Controls.Add(x);
+            });
+        }
+
+        private Button[,] CreateButtonArray2Dim()
         {
             var cells = Panel_matchfield.Controls.Cast<Button>().ToArray();
+            var buttonArray = new Button[x, y];
+
+            var k = 0;
+            for (var i = 0; i < y; i++)
+            {
+                for (var j = 0; j < x; j++)
+                {
+                    buttonArray[j, i] = cells[k];
+
+                    k++;
+                }
+            }
+
+            return buttonArray;
+        }
+
+        private bool CheckTouchBorder(ref int row, ref int column, params bool[] isBorder)
+        {
+            foreach (var isB in isBorder)
+            {
+                if (isB)
+                {
+
+
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private void GameLogic(Button[,] cells)
+        {
 
             // bsp: 20x20 feld: aktuelle zelle index = 20, nachbarn: index = 0, 1, 2, 19, 21, 38, 39, 40
 
+            var counter = 0;
 
-
-
-
-
-            // Durch alle Zellen iterieren.
-            for (var i = 0; i < x; i++)
+            for (var row = 0; row < y; row++)
             {
-                // Ränder, Thorus anwenden.
-                var border1 = i == i * x;
-                var border2 = i < x && i >= 0;
-                var border3 = i >= y * x - x && i <= x * y;
-                var border4 = i == i * x - 1;
-
-                // Nachbarn ermitteln.
-                var amountNeighbors = 0;
-                var b = -1;
-                for (var a = 0; a < 3; a++)
+                for (var column = 0; column < x; column++)
                 {
-                    var formula1 = i - x + b;
-                    amountNeighbors += cells[formula1].BackColor == Color.Red ? 1 : 0;
-                    amountNeighbors -= formula1 == i ? 1 : 0;
+                    var amountNeighbors = 0;
+                    var currentCell = cells[column, row];
 
-                    var formula2 = i + b;
-                    amountNeighbors += cells[formula2].BackColor == Color.Red ? 1 : 0;
-                    amountNeighbors -= formula2 == i ? 1 : 0;
+                    var isBorderUp = row == 0;
+                    var isBorderLeft = column == 0;
+                    var isBorderDown = row == y - 1;
+                    var isBorderRight = column == x - 1;
 
-                    var formula3 = i + x + b;
-                    amountNeighbors += cells[formula3].BackColor == Color.Red ? 1 : 0;
-                    amountNeighbors -= formula3 == i ? 1 : 0;
+                    var tempRow = row;
+                    var tempColumn = column;
 
-                    b++;
+                    var r = -1;
+                    var c = -1;
+
+                    if (isBorderUp) { r = 1; tempRow = y - 1 - r; }
+                    if (isBorderLeft) { c = 1; tempColumn = x - 1 - c; }
+                    if (isBorderDown) { r = 1; tempRow = 0 - r; }
+                    if (isBorderRight) { c = 1; tempColumn = 0 - c; }
+
+                    for (; r <= 1; r++)
+                    {
+                        for (; c <= 1; c++)
+                        {
+                            amountNeighbors += cells[tempColumn + c, tempRow + r].BackColor == Color.Red ? 1 : 0;
+                            amountNeighbors -= currentCell.BackColor == Color.Red ? 1 : 0;
+
+                            //tempRow = row;
+                            //tempColumn = column;
+                        }
+                    }
+
+
+
+
+                    //// Durch alle Zellen iterieren.
+                    //for (var i = 0; i < x; i++)
+                    //{
+                    //    // Ränder, Thorus anwenden.
+                    //    var border1 = i == i * x;
+                    //    var border2 = i < x && i >= 0;
+                    //    var border3 = i >= y * x - x && i <= x * y;
+                    //    var border4 = i == i * x - 1;
+
+                    //    // Nachbarn ermitteln.
+                    //    var amountNeighbors = 0;
+                    //    var b = -1;
+                    //    for (var a = 0; a < 3; a++)
+                    //    {
+                    //        var formula1 = i - x + b;
+                    //        amountNeighbors += cells[formula1].BackColor == Color.Red ? 1 : 0;
+                    //        amountNeighbors -= formula1 == i ? 1 : 0;
+
+                    //        var formula2 = i + b;
+                    //        amountNeighbors += cells[formula2].BackColor == Color.Red ? 1 : 0;
+                    //        amountNeighbors -= formula2 == i ? 1 : 0;
+
+                    //        var formula3 = i + x + b;
+                    //        amountNeighbors += cells[formula3].BackColor == Color.Red ? 1 : 0;
+                    //        amountNeighbors -= formula3 == i ? 1 : 0;
+
+                    //        b++;
+                    //    }
+
+                    // Lebende Zelle mit mehr als 3 Nachbarn, stirbt.
+                    bool isGreater3 = (currentCell.BackColor == Color.Red) && (amountNeighbors > 3);
+
+                    // Lebende Zelle mit 2 oder 3 Nachbarn, überlebt.
+                    bool is2or3 = (currentCell.BackColor == Color.Red) && (amountNeighbors == 2 || amountNeighbors == 3);
+
+                    // Lebende Zelle mit weniger als 2 Nachbarn, stirbt.
+                    bool isLess2 = (currentCell.BackColor == Color.Red) && (amountNeighbors < 2);
+
+                    // Tote Zelle mit genau 3 Nachbarn, wird geboren.
+                    bool is3 = (currentCell.BackColor == Color.Transparent) && (amountNeighbors == 3);
+
+                    if (isGreater3)
+                    {
+                        currentCell.BackColor = Color.Transparent;
+                    }
+                    else if (is2or3)
+                    {
+                        currentCell.BackColor = Color.Red;
+                    }
+                    else if (isLess2)
+                    {
+                        currentCell.BackColor = Color.Transparent;
+                    }
+                    else if (is3)
+                    {
+                        currentCell.BackColor = Color.Red;
+                    }
+
+                    currentPanel.Controls[counter].BackColor = currentCell.BackColor;
+
+                    CreateField();
+
+                    counter++;
                 }
-
-                // Lebende Zelle mit mehr als 3 Nachbarn, stirbt.
-                bool isGreater3 = amountNeighbors > 3;
-
-                // Lebende Zelle mit 2 oder 3 Nachbarn, überlebt.
-                bool is2or3 = amountNeighbors == 2 || amountNeighbors == 3;
-
-                // Lebende Zelle mit weniger als 2 Nachbarn, stirbt.
-                bool isLess2 = amountNeighbors < 2;
-
-                // Tote Zelle mit genau 3 Nachbarn, wird geboren.
-                bool is3 = amountNeighbors == 3;
-
-                if (isGreater3)
-                {
-                    cells[i].BackColor = Color.Transparent;
-                }
-                else if (is2or3)
-                {
-                    cells[i].BackColor = Color.Red;
-                }
-                else if (isLess2)
-                {
-                    cells[i].BackColor = Color.Transparent;
-                }
-                else if (is3)
-                {
-                    cells[i].BackColor = Color.Red;
-                }
-
-                Task.Delay(1000);
             }
+        }
+
+        private void Btn_resume_Click(object sender, EventArgs e)
+        {
+            var cells = CreateButtonArray2Dim();
+            var i = 0;
+            while (i < 10)
+            {
+                GameLogic(cells);
+                Thread.Sleep(1000);
+                i++;
+            }
+        }
+
+        private void Btn_back_to_menu_main_Click(object sender, EventArgs e)
+        {
+            OpenForm(Menu_main, Menu_startGame = this);
+        }
+
+        private void Btn_resume_MouseDown(object sender, MouseEventArgs e)
+        {
+            Btn_resume.Text = Btn_resume.Text == "Pause" ? "Fortsetzen" : "Pause";
+            isRunning = Btn_resume.Text == "Pause";
         }
     }
 }
+

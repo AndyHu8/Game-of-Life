@@ -62,10 +62,17 @@ namespace Game_of_Life_Win_Form
 
             Label_size_load.Visible = false;
             Label_input_confirmed.Visible = true;
+            Label_matchfield_zero.Visible = false;
         }
 
         private void btn_zellen_zufall_Click(object sender, EventArgs e)
         {
+            if (Matchfield.CurrentMatchfield.Controls.Count <= 0)
+            {
+                Label_matchfield_zero.Visible = true;
+                return;
+            }
+
             Label_loading_done.Visible = false;
 
             Matchfield.Btn_reset_Click(null, null);
@@ -119,15 +126,13 @@ namespace Game_of_Life_Win_Form
             bool isGreaterZeroX = x_number > 0;
             bool isGreaterZeroY = y_number > 0;
 
-            if (!isGreaterZeroX || !isGreaterZeroY)
+            if (X_Input.Text != "" || Y_Input.Text != "")
             {
-                Label_wrong_input.Visible = true;
-                return false;
-            }
-            if (!isIntX || !isIntY)
-            {
-                Label_wrong_input.Visible = true;
-                return false;
+                if ((!isGreaterZeroX || !isGreaterZeroY || !isIntX || !isIntY))
+                {
+                    Label_wrong_input.Visible = true;
+                    return false;
+                }
             }
 
             Label_wrong_input.Visible = false;
