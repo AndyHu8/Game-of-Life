@@ -99,7 +99,7 @@ namespace Game_of_Life_Win_Form
 
         private void btn_start_game_Click(object sender, EventArgs e)
         {
-            OpenForm(Menu_startGame, Menu_newGame = this);
+            OpenForm(Menu_startGame = new Menu_startGame(x_number, y_number), Menu_newGame = this);
         }
 
         private void X_Input_Leave(object sender, EventArgs e)
@@ -119,7 +119,20 @@ namespace Game_of_Life_Win_Form
             bool isGreaterZeroX = x_number > 0;
             bool isGreaterZeroY = y_number > 0;
 
-            return !(Label_inserted_string.Visible = isIntX && isIntY && isGreaterZeroX && isGreaterZeroY);
+            if (!isGreaterZeroX || !isGreaterZeroY)
+            {
+                Label_wrong_input.Visible = true;
+                return false;
+            }
+            if (!isIntX || !isIntY)
+            {
+                Label_wrong_input.Visible = true;
+                return false;
+            }
+
+            Label_wrong_input.Visible = false;
+
+            return true;
         }
 
         private void btn_eingaben_uebernehmen_EnabledChanged(object sender, EventArgs e)
@@ -135,7 +148,7 @@ namespace Game_of_Life_Win_Form
         private void btn_eingaben_uebernehmen_MouseDown(object sender, MouseEventArgs e)
         {
             Label_size_load.Visible = true;
-            Label_inserted_string.Visible = false;
+            Label_wrong_input.Visible = false;
         }
 
         private void btn_zellen_zufall_MouseDown(object sender, MouseEventArgs e)

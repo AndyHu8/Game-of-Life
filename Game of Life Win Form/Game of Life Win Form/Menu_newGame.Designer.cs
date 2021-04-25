@@ -45,7 +45,7 @@ namespace Game_of_Life_Win_Form
             this.label8 = new System.Windows.Forms.Label();
             this.btn_spielfeld_aufrufen = new System.Windows.Forms.Button();
             this.btn_start_game = new System.Windows.Forms.Button();
-            this.Label_inserted_string = new System.Windows.Forms.Label();
+            this.Label_wrong_input = new System.Windows.Forms.Label();
             this.Label_input_confirmed = new System.Windows.Forms.Label();
             this.Label_random_load = new System.Windows.Forms.Label();
             this.Label_loading_done = new System.Windows.Forms.Label();
@@ -231,17 +231,17 @@ namespace Game_of_Life_Win_Form
             this.btn_start_game.UseVisualStyleBackColor = true;
             this.btn_start_game.Click += new System.EventHandler(this.btn_start_game_Click);
             // 
-            // Label_inserted_string
+            // Label_wrong_input
             // 
-            this.Label_inserted_string.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Label_inserted_string.AutoSize = true;
-            this.Label_inserted_string.ForeColor = System.Drawing.Color.Red;
-            this.Label_inserted_string.Location = new System.Drawing.Point(130, 146);
-            this.Label_inserted_string.Name = "Label_inserted_string";
-            this.Label_inserted_string.Size = new System.Drawing.Size(147, 13);
-            this.Label_inserted_string.TabIndex = 17;
-            this.Label_inserted_string.Text = "Nur natürliche Zahlen erlaubt!";
-            this.Label_inserted_string.Visible = false;
+            this.Label_wrong_input.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Label_wrong_input.AutoSize = true;
+            this.Label_wrong_input.ForeColor = System.Drawing.Color.Red;
+            this.Label_wrong_input.Location = new System.Drawing.Point(130, 146);
+            this.Label_wrong_input.Name = "Label_wrong_input";
+            this.Label_wrong_input.Size = new System.Drawing.Size(147, 13);
+            this.Label_wrong_input.TabIndex = 17;
+            this.Label_wrong_input.Text = "Nur natürliche Zahlen erlaubt!";
+            this.Label_wrong_input.Visible = false;
             // 
             // Label_input_confirmed
             // 
@@ -305,7 +305,7 @@ namespace Game_of_Life_Win_Form
             this.Controls.Add(this.Label_loading_done);
             this.Controls.Add(this.Label_random_load);
             this.Controls.Add(this.Label_input_confirmed);
-            this.Controls.Add(this.Label_inserted_string);
+            this.Controls.Add(this.Label_wrong_input);
             this.Controls.Add(this.btn_start_game);
             this.Controls.Add(this.btn_spielfeld_aufrufen);
             this.Controls.Add(this.label8);
@@ -350,7 +350,7 @@ namespace Game_of_Life_Win_Form
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btn_spielfeld_aufrufen;
         private System.Windows.Forms.Button btn_start_game;
-        private System.Windows.Forms.Label Label_inserted_string;
+        private System.Windows.Forms.Label Label_wrong_input;
         private System.Windows.Forms.Label Label_input_confirmed;
         private System.Windows.Forms.Label Label_random_load;
         private System.Windows.Forms.Label Label_loading_done;

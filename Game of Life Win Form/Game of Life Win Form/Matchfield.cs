@@ -19,7 +19,6 @@ namespace Game_of_Life_Win_Form
         public Matchfield()
         {
             InitializeComponent();
-            Matchfield = this;
         }
 
         public Matchfield(int x, int y)
