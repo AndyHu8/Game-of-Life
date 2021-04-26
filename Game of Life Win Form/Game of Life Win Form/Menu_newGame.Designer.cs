@@ -224,6 +224,7 @@ namespace Game_of_Life_Win_Form
             // btn_start_game
             // 
             this.btn_start_game.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btn_start_game.Enabled = false;
             this.btn_start_game.Location = new System.Drawing.Point(393, 395);
             this.btn_start_game.Name = "btn_start_game";
             this.btn_start_game.Size = new System.Drawing.Size(121, 23);

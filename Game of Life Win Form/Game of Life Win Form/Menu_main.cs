@@ -19,12 +19,19 @@ namespace Game_of_Life_Win_Form
 
         private void btn_new_game_menu_newGame_Click(object sender, EventArgs e)
         {
+            Label_no_existing_game.Visible = false;
             OpenForm(Menu_newGame, Menu_main = this);
         }
 
         private void Btn_exit_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void btn_load_game_Click(object sender, EventArgs e)
+        {
+            if (Menu_startGame != null) OpenForm(Menu_startGame, Menu_main = this);
+            else Label_no_existing_game.Visible = true;
         }
     }
 }

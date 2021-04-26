@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Game_of_Life_Win_Form
@@ -30,9 +31,10 @@ namespace Game_of_Life_Win_Form
             this.y = y;
 
             currentPanel = Matchfield.CurrentMatchfield;
+            //Panel_matchfield = Matchfield.CurrentMatchfield;
 
             CreateField();
-            //Panel_matchfield = Matchfield.CurrentMatchfield;
+
             //foreach (var button in Panel_matchfield.Controls.Cast<Button>())
             //{
             //    button.FlatAppearance.MouseDownBackColor = Color.Transparent;
@@ -45,17 +47,33 @@ namespace Game_of_Life_Win_Form
 
         private void CreateField()
         {
-            Panel_matchfield.Controls.Clear();
+            //currentPanel = Matchfield.CurrentMatchfield;
 
-            currentPanel.Controls.Cast<Button>().ToList().ForEach(x =>
+            Panel_matchfield.Controls.Clear();
+            var cPA = currentPanel.Controls.Cast<Button>().ToList();
+
+            for (var i = 0; i < cPA.Count; i++)
             {
-                Panel_matchfield.Controls.Add(x);
-            });
+                var cell = new Tools().Btn_cell;
+
+                cell.BackColor = cPA[i].BackColor;
+                cell.Location = cPA[i].Location;
+
+                Panel_matchfield.Controls.Add(cell);
+                //Thread.Sleep(1);
+            }
+
+            //currentPanel.Controls.Cast<Button>().ToList().ForEach(x =>
+            //{
+            //    Panel_matchfield.Controls.Add(x);
+            //});
+
+            //Matchfield.CurrentMatchfield = currentPanel;
         }
 
         private Button[,] CreateButtonArray2Dim()
         {
-            var cells = Panel_matchfield.Controls.Cast<Button>().ToArray();
+            var cells = currentPanel.Controls.Cast<Button>().ToArray();
             var buttonArray = new Button[x, y];
 
             var k = 0;
@@ -72,25 +90,10 @@ namespace Game_of_Life_Win_Form
             return buttonArray;
         }
 
-        private bool CheckTouchBorder(ref int row, ref int column, params bool[] isBorder)
+        private async Task<Panel> GameLogic(Button[,] cells)
         {
-            foreach (var isB in isBorder)
-            {
-                if (isB)
-                {
-
-
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        private void GameLogic(Button[,] cells)
-        {
-
-            // bsp: 20x20 feld: aktuelle zelle index = 20, nachbarn: index = 0, 1, 2, 19, 21, 38, 39, 40
+            // async prozess fertigstellen!
+            await ;
 
             var counter = 0;
 
@@ -197,15 +200,23 @@ namespace Game_of_Life_Win_Form
                     counter++;
                 }
             }
+
+            return currentPanel;
         }
 
-        private void Btn_resume_Click(object sender, EventArgs e)
+        private async void Btn_resume_Click(object sender, EventArgs e)
         {
             var cells = CreateButtonArray2Dim();
             var i = 0;
+
+            Btn_resume.Text = Btn_resume.Text == "Pause" ? "Fortsetzen" : "Pause";
+            isRunning = Btn_resume.Text == "Pause";
+
             while (i < 10)
             {
-                GameLogic(cells);
+                var task = GameLogic(cells);
+                await task;
+                InitializeComponent();
                 Thread.Sleep(1000);
                 i++;
             }
@@ -213,13 +224,13 @@ namespace Game_of_Life_Win_Form
 
         private void Btn_back_to_menu_main_Click(object sender, EventArgs e)
         {
+            Menu_newGame = new Menu_newGame();
             OpenForm(Menu_main, Menu_startGame = this);
         }
 
         private void Btn_resume_MouseDown(object sender, MouseEventArgs e)
         {
-            Btn_resume.Text = Btn_resume.Text == "Pause" ? "Fortsetzen" : "Pause";
-            isRunning = Btn_resume.Text == "Pause";
+
         }
     }
 }

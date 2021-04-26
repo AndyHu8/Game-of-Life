@@ -15,12 +15,6 @@ namespace Game_of_Life_Win_Form
         private string x_previousText;
         private string y_previousText;
 
-        private bool ConfirmInput
-        {
-            get { return x_previousText != X_Input.Text || y_previousText != Y_Input.Text; }
-            set { }
-        }
-
         public Menu_newGame()
         {
             InitializeComponent();
@@ -36,12 +30,12 @@ namespace Game_of_Life_Win_Form
 
         private void Y_Input_TextChanged(object sender, EventArgs e)
         {
-            if (Y_Input.Text != "") btn_eingaben_uebernehmen.Enabled = Input_validation() && ConfirmInput;
+            btn_eingaben_uebernehmen.Enabled = Input_validation();
         }
 
         private void X_Input_TextChanged(object sender, EventArgs e)
         {
-            if (X_Input.Text != "") btn_eingaben_uebernehmen.Enabled = Input_validation() && ConfirmInput;
+            btn_eingaben_uebernehmen.Enabled = Input_validation();
         }
 
         private void btn_spielfeld_zufall_Click(object sender, EventArgs e)
@@ -59,6 +53,7 @@ namespace Game_of_Life_Win_Form
             btn_eingaben_uebernehmen.Enabled = false;
 
             Matchfield = new Matchfield(x_number, y_number);
+            btn_start_game.Enabled = true;
 
             Label_size_load.Visible = false;
             Label_input_confirmed.Visible = true;
@@ -106,6 +101,7 @@ namespace Game_of_Life_Win_Form
 
         private void btn_start_game_Click(object sender, EventArgs e)
         {
+            if (Menu_startGame == null) btn_start_game.Enabled = false;
             OpenForm(Menu_startGame = new Menu_startGame(x_number, y_number), Menu_newGame = this);
         }
 
@@ -125,17 +121,44 @@ namespace Game_of_Life_Win_Form
             bool isIntY = int.TryParse(Y_Input.Text, out y_number);
             bool isGreaterZeroX = x_number > 0;
             bool isGreaterZeroY = y_number > 0;
+            bool isPreviousX = X_Input.Text == x_previousText;
+            bool isPreviousY = Y_Input.Text == y_previousText;
 
-            if (X_Input.Text != "" || Y_Input.Text != "")
+            Label_wrong_input.Visible = false;
+
+            if (X_Input.Text != "")
             {
-                if ((!isGreaterZeroX || !isGreaterZeroY || !isIntX || !isIntY))
+                if (!isIntX || !isGreaterZeroX)
                 {
                     Label_wrong_input.Visible = true;
+
                     return false;
                 }
             }
 
-            Label_wrong_input.Visible = false;
+            if (Y_Input.Text != "")
+            {
+                if (!isIntY || !isGreaterZeroY)
+                {
+                    Label_wrong_input.Visible = true;
+
+                    return false;
+                }
+            }
+
+            if (X_Input.Text == "" || Y_Input.Text == "")
+            {
+                Label_wrong_input.Visible = false;
+
+                return false;
+            }
+
+            if (isPreviousX && isPreviousY)
+            {
+                Label_wrong_input.Visible = false;
+
+                return false;
+            }
 
             return true;
         }
