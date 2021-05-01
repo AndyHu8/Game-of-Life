@@ -32,6 +32,7 @@ namespace Game_of_Life_Win_Form
             this.Panel_matchfield = new System.Windows.Forms.Panel();
             this.Btn_resume = new System.Windows.Forms.Button();
             this.Btn_back_to_menu_main = new System.Windows.Forms.Button();
+            this.Btn_steps = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Panel_matchfield
@@ -72,11 +73,23 @@ namespace Game_of_Life_Win_Form
             this.Btn_back_to_menu_main.UseVisualStyleBackColor = true;
             this.Btn_back_to_menu_main.Click += new System.EventHandler(this.Btn_back_to_menu_main_Click);
             // 
+            // Btn_steps
+            // 
+            this.Btn_steps.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.Btn_steps.Location = new System.Drawing.Point(292, 393);
+            this.Btn_steps.Name = "Btn_steps";
+            this.Btn_steps.Size = new System.Drawing.Size(75, 23);
+            this.Btn_steps.TabIndex = 6;
+            this.Btn_steps.Text = "Schritt";
+            this.Btn_steps.UseVisualStyleBackColor = true;
+            this.Btn_steps.Click += new System.EventHandler(this.Btn_steps_Click);
+            // 
             // Menu_startGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Btn_steps);
             this.Controls.Add(this.Btn_back_to_menu_main);
             this.Controls.Add(this.Btn_resume);
             this.Controls.Add(this.Panel_matchfield);
@@ -91,5 +104,6 @@ namespace Game_of_Life_Win_Form
         private System.Windows.Forms.Panel Panel_matchfield;
         private System.Windows.Forms.Button Btn_resume;
         private System.Windows.Forms.Button Btn_back_to_menu_main;
+        private System.Windows.Forms.Button Btn_steps;
     }
 }

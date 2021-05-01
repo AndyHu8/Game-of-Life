@@ -16,7 +16,7 @@ namespace Game_of_Life_Win_Form
         private int x;
         private int y;
         private bool isRunning;
-        private Panel currentPanel;
+        private Button[,] buttonArray;
 
         public Menu_startGame()
         {
@@ -30,10 +30,11 @@ namespace Game_of_Life_Win_Form
             this.x = x;
             this.y = y;
 
-            currentPanel = Matchfield.CurrentMatchfield;
             //Panel_matchfield = Matchfield.CurrentMatchfield;
 
             CreateField();
+
+            buttonArray = CreateButtonArray2Dim();
 
             //foreach (var button in Panel_matchfield.Controls.Cast<Button>())
             //{
@@ -50,7 +51,7 @@ namespace Game_of_Life_Win_Form
             //currentPanel = Matchfield.CurrentMatchfield;
 
             Panel_matchfield.Controls.Clear();
-            var cPA = currentPanel.Controls.Cast<Button>().ToList();
+            var cPA = Matchfield.CurrentMatchfield.Controls.Cast<Button>().ToList();
 
             for (var i = 0; i < cPA.Count; i++)
             {
@@ -73,7 +74,7 @@ namespace Game_of_Life_Win_Form
 
         private Button[,] CreateButtonArray2Dim()
         {
-            var cells = currentPanel.Controls.Cast<Button>().ToArray();
+            var cells = Panel_matchfield.Controls.Cast<Button>().ToArray();
             var buttonArray = new Button[x, y];
 
             var k = 0;
@@ -90,12 +91,10 @@ namespace Game_of_Life_Win_Form
             return buttonArray;
         }
 
-        private async Task<Panel> GameLogic(Button[,] cells)
+        private Button[,] GameLogic(Button[,] cells)
         {
-            // async prozess fertigstellen!
-            await ;
-
             var counter = 0;
+            var nextGen = new Button[x, y];
 
             for (var row = 0; row < y; row++)
             {
@@ -125,13 +124,13 @@ namespace Game_of_Life_Win_Form
                         for (; c <= 1; c++)
                         {
                             amountNeighbors += cells[tempColumn + c, tempRow + r].BackColor == Color.Red ? 1 : 0;
-                            amountNeighbors -= currentCell.BackColor == Color.Red ? 1 : 0;
 
                             //tempRow = row;
                             //tempColumn = column;
                         }
                     }
 
+                    amountNeighbors -= currentCell.BackColor == Color.Red ? 1 : 0;
 
 
 
@@ -193,32 +192,32 @@ namespace Game_of_Life_Win_Form
                         currentCell.BackColor = Color.Red;
                     }
 
-                    currentPanel.Controls[counter].BackColor = currentCell.BackColor;
+                    Panel_matchfield.Controls[counter].BackColor = currentCell.BackColor;
+                    nextGen[column, row] = currentCell;
 
-                    CreateField();
+                    //CreateField();
 
                     counter++;
                 }
             }
+            //CreateField();
+            Refresh();
 
-            return currentPanel;
+            return nextGen;
         }
 
         private async void Btn_resume_Click(object sender, EventArgs e)
         {
-            var cells = CreateButtonArray2Dim();
-            var i = 0;
 
             Btn_resume.Text = Btn_resume.Text == "Pause" ? "Fortsetzen" : "Pause";
             isRunning = Btn_resume.Text == "Pause";
 
-            while (i < 10)
+            var nextGen = buttonArray;
+
+            while (isRunning)
             {
-                var task = GameLogic(cells);
-                await task;
-                InitializeComponent();
-                Thread.Sleep(1000);
-                i++;
+                nextGen = GameLogic(nextGen);
+                await Task.Delay(1000);
             }
         }
 
@@ -231,6 +230,13 @@ namespace Game_of_Life_Win_Form
         private void Btn_resume_MouseDown(object sender, MouseEventArgs e)
         {
 
+        }
+
+        private void Btn_steps_Click(object sender, EventArgs e)
+        {
+            var cells = CreateButtonArray2Dim();
+
+            GameLogic(cells);
         }
     }
 }
