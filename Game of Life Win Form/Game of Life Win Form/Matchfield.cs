@@ -102,6 +102,7 @@ namespace Game_of_Life_Win_Form
                 {
                     btn = new Tools().Btn_cell;
 
+                    btn.Size = new Size(Panel_matchfield.MaximumSize.Height / y, Panel_matchfield.MaximumSize.Height / y);
                     btn.Location = new Point(j * btn.Width, i * btn.Height);
 
                     Panel_matchfield.Controls.Add(btn);
@@ -113,7 +114,7 @@ namespace Game_of_Life_Win_Form
 
         private void Matchfield_Load(object sender, EventArgs e)
         {
-            Matchfield_Resize(null, null);
+
         }
     }
 }

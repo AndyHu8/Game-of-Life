@@ -17,6 +17,9 @@ namespace Game_of_Life_Win_Form
         private int y;
         private bool isRunning;
         private Button[,] buttonArray;
+        private double speed = 1;
+        private const double delay = 500;
+        private double modDelay;
 
         public Menu_startGame()
         {
@@ -36,14 +39,14 @@ namespace Game_of_Life_Win_Form
 
             buttonArray = CreateButtonArray2Dim();
 
+            trackBar_speed.Value = (trackBar_speed.Maximum + trackBar_speed.Minimum) / 2;
+
             //foreach (var button in Panel_matchfield.Controls.Cast<Button>())
             //{
             //    button.FlatAppearance.MouseDownBackColor = Color.Transparent;
             //    button.FlatAppearance.MouseOverBackColor = Color.Transparent;
             //    //button.CausesValidation = false;
             //}
-
-
         }
 
         private void CreateField()
@@ -59,6 +62,7 @@ namespace Game_of_Life_Win_Form
 
                 cell.BackColor = cPA[i].BackColor;
                 cell.Location = cPA[i].Location;
+                cell.Size = cPA[i].Size;
 
                 Panel_matchfield.Controls.Add(cell);
                 //Thread.Sleep(1);
@@ -75,14 +79,14 @@ namespace Game_of_Life_Win_Form
         private Button[,] CreateButtonArray2Dim()
         {
             var cells = Panel_matchfield.Controls.Cast<Button>().ToArray();
-            var buttonArray = new Button[x, y];
+            var buttonArray = new Button[y, x];
 
             var k = 0;
             for (var i = 0; i < y; i++)
             {
                 for (var j = 0; j < x; j++)
                 {
-                    buttonArray[j, i] = cells[k];
+                    buttonArray[i, j] = cells[k];
 
                     k++;
                 }
@@ -94,14 +98,14 @@ namespace Game_of_Life_Win_Form
         private Button[,] GameLogic(Button[,] cells)
         {
             var counter = 0;
-            var nextGen = new Button[x, y];
+            var nextGen = new Button[y, x];
 
             for (var row = 0; row < y; row++)
             {
                 for (var column = 0; column < x; column++)
                 {
                     var amountNeighbors = 0;
-                    var currentCell = cells[column, row];
+                    var currentCell = cells[row, column];
 
                     var isBorderUp = row == 0;
                     var isBorderLeft = column == 0;
@@ -111,57 +115,26 @@ namespace Game_of_Life_Win_Form
                     var tempRow = row;
                     var tempColumn = column;
 
-                    var r = -1;
-                    var c = -1;
-
-                    if (isBorderUp) { r = 1; tempRow = y - 1 - r; }
-                    if (isBorderLeft) { c = 1; tempColumn = x - 1 - c; }
-                    if (isBorderDown) { r = 1; tempRow = 0 - r; }
-                    if (isBorderRight) { c = 1; tempColumn = 0 - c; }
-
-                    for (; r <= 1; r++)
+                    for (var r = -1; r <= 1; r++)
                     {
-                        for (; c <= 1; c++)
+                        if (isBorderUp && r == -1) tempRow = y;
+                        if (isBorderDown && r == 1) tempRow = -1;
+                        for (var c = -1; c <= 1; c++)
                         {
-                            amountNeighbors += cells[tempColumn + c, tempRow + r].BackColor == Color.Red ? 1 : 0;
+                            if (isBorderLeft && c == -1) tempColumn = x;
+                            if (isBorderRight && c == 1) tempColumn = -1;
+                            if (cells[tempRow + r, tempColumn + c].BackColor == Color.Red)
+                            {
+                                amountNeighbors++;
+                            }
 
-                            //tempRow = row;
-                            //tempColumn = column;
+                            tempColumn = column;
                         }
+
+                        tempRow = row;
                     }
 
                     amountNeighbors -= currentCell.BackColor == Color.Red ? 1 : 0;
-
-
-
-                    //// Durch alle Zellen iterieren.
-                    //for (var i = 0; i < x; i++)
-                    //{
-                    //    // Ränder, Thorus anwenden.
-                    //    var border1 = i == i * x;
-                    //    var border2 = i < x && i >= 0;
-                    //    var border3 = i >= y * x - x && i <= x * y;
-                    //    var border4 = i == i * x - 1;
-
-                    //    // Nachbarn ermitteln.
-                    //    var amountNeighbors = 0;
-                    //    var b = -1;
-                    //    for (var a = 0; a < 3; a++)
-                    //    {
-                    //        var formula1 = i - x + b;
-                    //        amountNeighbors += cells[formula1].BackColor == Color.Red ? 1 : 0;
-                    //        amountNeighbors -= formula1 == i ? 1 : 0;
-
-                    //        var formula2 = i + b;
-                    //        amountNeighbors += cells[formula2].BackColor == Color.Red ? 1 : 0;
-                    //        amountNeighbors -= formula2 == i ? 1 : 0;
-
-                    //        var formula3 = i + x + b;
-                    //        amountNeighbors += cells[formula3].BackColor == Color.Red ? 1 : 0;
-                    //        amountNeighbors -= formula3 == i ? 1 : 0;
-
-                    //        b++;
-                    //    }
 
                     // Lebende Zelle mit mehr als 3 Nachbarn, stirbt.
                     bool isGreater3 = (currentCell.BackColor == Color.Red) && (amountNeighbors > 3);
@@ -175,50 +148,80 @@ namespace Game_of_Life_Win_Form
                     // Tote Zelle mit genau 3 Nachbarn, wird geboren.
                     bool is3 = (currentCell.BackColor == Color.Transparent) && (amountNeighbors == 3);
 
+                    nextGen[row, column] = new Tools().Btn_cell;
+
                     if (isGreater3)
                     {
-                        currentCell.BackColor = Color.Transparent;
+                        nextGen[row, column].BackColor = Color.Transparent;
                     }
                     else if (is2or3)
                     {
-                        currentCell.BackColor = Color.Red;
+                        nextGen[row, column].BackColor = Color.Red;
                     }
                     else if (isLess2)
                     {
-                        currentCell.BackColor = Color.Transparent;
+                        nextGen[row, column].BackColor = Color.Transparent;
                     }
                     else if (is3)
                     {
-                        currentCell.BackColor = Color.Red;
+                        nextGen[row, column].BackColor = Color.Red;
                     }
-
-                    Panel_matchfield.Controls[counter].BackColor = currentCell.BackColor;
-                    nextGen[column, row] = currentCell;
-
-                    //CreateField();
 
                     counter++;
                 }
             }
-            //CreateField();
-            Refresh();
 
             return nextGen;
+        }
+
+        private void RefreshGrid(Button[,] grid)
+        {
+            var k = 0;
+
+            for (var i = 0; i < y; i++)
+            {
+                for (var j = 0; j < x; j++)
+                {
+                    Panel_matchfield.Controls[k].BackColor = grid[i, j].BackColor;
+
+                    k++;
+                }
+            }
+
+            Panel_matchfield.Refresh();
+
+            Thread.Sleep(TimeSpan.FromMilliseconds(modDelay));
         }
 
         private async void Btn_resume_Click(object sender, EventArgs e)
         {
 
-            Btn_resume.Text = Btn_resume.Text == "Pause" ? "Fortsetzen" : "Pause";
-            isRunning = Btn_resume.Text == "Pause";
+            if (Btn_resume.Text == "Pause")
+            {
+                Btn_resume.Text = "Fortsetzen";
+                Btn_steps.Enabled = true;
+                isRunning = false;
+            }
+            else
+            {
+                Btn_resume.Text = "Pause";
+                Btn_steps.Enabled = false;
+                isRunning = true;
+            }
 
             var nextGen = buttonArray;
 
             while (isRunning)
             {
                 nextGen = GameLogic(nextGen);
-                await Task.Delay(1000);
+                RefreshGrid(nextGen);
+                await Task.Delay(1);
             }
+        }
+
+        private async Task Delay()
+        {
+            await Task.Delay(TimeSpan.FromMilliseconds(modDelay));
         }
 
         private void Btn_back_to_menu_main_Click(object sender, EventArgs e)
@@ -234,9 +237,19 @@ namespace Game_of_Life_Win_Form
 
         private void Btn_steps_Click(object sender, EventArgs e)
         {
-            var cells = CreateButtonArray2Dim();
+            var cells = buttonArray;
 
-            GameLogic(cells);
+            cells = GameLogic(cells);
+            RefreshGrid(cells);
+        }
+
+        private async void trackBar_speed_ValueChanged(object sender, EventArgs e)
+        {
+            speed = Math.Pow(0.5, trackBar_speed.Value - (trackBar_speed.Maximum + trackBar_speed.Minimum) / 2);
+            modDelay = delay * speed;
+            Label_speed_value.Text = (modDelay / 1000.0).ToString() + " s\ndelay";
+
+            await Task.Delay(1);
         }
     }
 }
