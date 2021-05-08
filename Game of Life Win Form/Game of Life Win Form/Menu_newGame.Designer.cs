@@ -56,9 +56,10 @@ namespace Game_of_Life_Win_Form
             // btn_back_to_menu_main
             // 
             this.btn_back_to_menu_main.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_back_to_menu_main.Location = new System.Drawing.Point(243, 395);
+            this.btn_back_to_menu_main.Location = new System.Drawing.Point(324, 486);
+            this.btn_back_to_menu_main.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_back_to_menu_main.Name = "btn_back_to_menu_main";
-            this.btn_back_to_menu_main.Size = new System.Drawing.Size(121, 23);
+            this.btn_back_to_menu_main.Size = new System.Drawing.Size(161, 28);
             this.btn_back_to_menu_main.TabIndex = 0;
             this.btn_back_to_menu_main.Text = "Zurück";
             this.btn_back_to_menu_main.UseVisualStyleBackColor = true;
@@ -69,9 +70,10 @@ namespace Game_of_Life_Win_Form
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(236, 22);
+            this.label1.Location = new System.Drawing.Point(315, 27);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(337, 37);
+            this.label1.Size = new System.Drawing.Size(417, 46);
             this.label1.TabIndex = 1;
             this.label1.Text = "Neues Spiel erstellen";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -81,9 +83,10 @@ namespace Game_of_Life_Win_Form
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(72, 86);
+            this.label2.Location = new System.Drawing.Point(96, 106);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(205, 24);
+            this.label2.Size = new System.Drawing.Size(262, 29);
             this.label2.TabIndex = 2;
             this.label2.Text = "Größe des Spielfelds";
             // 
@@ -92,18 +95,20 @@ namespace Game_of_Life_Win_Form
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(72, 121);
+            this.label3.Location = new System.Drawing.Point(96, 149);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(24, 20);
+            this.label3.Size = new System.Drawing.Size(32, 25);
             this.label3.TabIndex = 3;
             this.label3.Text = "X:";
             // 
             // X_Input
             // 
             this.X_Input.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.X_Input.Location = new System.Drawing.Point(97, 123);
+            this.X_Input.Location = new System.Drawing.Point(129, 151);
+            this.X_Input.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.X_Input.Name = "X_Input";
-            this.X_Input.Size = new System.Drawing.Size(100, 20);
+            this.X_Input.Size = new System.Drawing.Size(132, 22);
             this.X_Input.TabIndex = 4;
             this.X_Input.TextChanged += new System.EventHandler(this.X_Input_TextChanged);
             this.X_Input.Leave += new System.EventHandler(this.X_Input_Leave);
@@ -113,18 +118,20 @@ namespace Game_of_Life_Win_Form
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(222, 123);
+            this.label4.Location = new System.Drawing.Point(296, 151);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(24, 20);
+            this.label4.Size = new System.Drawing.Size(31, 25);
             this.label4.TabIndex = 5;
             this.label4.Text = "Y:";
             // 
             // Y_Input
             // 
             this.Y_Input.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Y_Input.Location = new System.Drawing.Point(247, 123);
+            this.Y_Input.Location = new System.Drawing.Point(329, 151);
+            this.Y_Input.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Y_Input.Name = "Y_Input";
-            this.Y_Input.Size = new System.Drawing.Size(100, 20);
+            this.Y_Input.Size = new System.Drawing.Size(132, 22);
             this.Y_Input.TabIndex = 6;
             this.Y_Input.TextChanged += new System.EventHandler(this.Y_Input_TextChanged);
             this.Y_Input.Leave += new System.EventHandler(this.Y_Input_Leave);
@@ -134,18 +141,20 @@ namespace Game_of_Life_Win_Form
             this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(377, 123);
+            this.label5.Location = new System.Drawing.Point(503, 151);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(80, 20);
+            this.label5.Size = new System.Drawing.Size(100, 25);
             this.label5.TabIndex = 7;
             this.label5.Text = "Per Zufall:";
             // 
             // btn_spielfeld_zufall
             // 
             this.btn_spielfeld_zufall.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_spielfeld_zufall.Location = new System.Drawing.Point(463, 121);
+            this.btn_spielfeld_zufall.Location = new System.Drawing.Point(617, 149);
+            this.btn_spielfeld_zufall.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_spielfeld_zufall.Name = "btn_spielfeld_zufall";
-            this.btn_spielfeld_zufall.Size = new System.Drawing.Size(121, 23);
+            this.btn_spielfeld_zufall.Size = new System.Drawing.Size(161, 28);
             this.btn_spielfeld_zufall.TabIndex = 8;
             this.btn_spielfeld_zufall.Text = "Zufällig generieren";
             this.btn_spielfeld_zufall.UseVisualStyleBackColor = true;
@@ -155,9 +164,10 @@ namespace Game_of_Life_Win_Form
             // 
             this.btn_eingaben_uebernehmen.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btn_eingaben_uebernehmen.Enabled = false;
-            this.btn_eingaben_uebernehmen.Location = new System.Drawing.Point(76, 172);
+            this.btn_eingaben_uebernehmen.Location = new System.Drawing.Point(101, 212);
+            this.btn_eingaben_uebernehmen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_eingaben_uebernehmen.Name = "btn_eingaben_uebernehmen";
-            this.btn_eingaben_uebernehmen.Size = new System.Drawing.Size(143, 23);
+            this.btn_eingaben_uebernehmen.Size = new System.Drawing.Size(191, 28);
             this.btn_eingaben_uebernehmen.TabIndex = 9;
             this.btn_eingaben_uebernehmen.Text = "Eingaben übernehmen";
             this.btn_eingaben_uebernehmen.UseVisualStyleBackColor = true;
@@ -170,9 +180,10 @@ namespace Game_of_Life_Win_Form
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(72, 249);
+            this.label6.Location = new System.Drawing.Point(96, 306);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(210, 24);
+            this.label6.Size = new System.Drawing.Size(263, 29);
             this.label6.TabIndex = 10;
             this.label6.Text = "Positionen der Zellen";
             // 
@@ -181,18 +192,20 @@ namespace Game_of_Life_Win_Form
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(72, 286);
+            this.label7.Location = new System.Drawing.Point(96, 352);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(80, 20);
+            this.label7.Size = new System.Drawing.Size(100, 25);
             this.label7.TabIndex = 11;
             this.label7.Text = "Per Zufall:";
             // 
             // btn_zellen_zufall
             // 
             this.btn_zellen_zufall.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_zellen_zufall.Location = new System.Drawing.Point(161, 286);
+            this.btn_zellen_zufall.Location = new System.Drawing.Point(215, 352);
+            this.btn_zellen_zufall.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_zellen_zufall.Name = "btn_zellen_zufall";
-            this.btn_zellen_zufall.Size = new System.Drawing.Size(121, 23);
+            this.btn_zellen_zufall.Size = new System.Drawing.Size(161, 28);
             this.btn_zellen_zufall.TabIndex = 12;
             this.btn_zellen_zufall.Text = "Zufällig generieren";
             this.btn_zellen_zufall.UseVisualStyleBackColor = true;
@@ -204,18 +217,20 @@ namespace Game_of_Life_Win_Form
             this.label8.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(377, 286);
+            this.label8.Location = new System.Drawing.Point(503, 352);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(127, 20);
+            this.label8.Size = new System.Drawing.Size(159, 25);
             this.label8.TabIndex = 13;
             this.label8.Text = "Per Koordinaten:";
             // 
             // btn_spielfeld_aufrufen
             // 
             this.btn_spielfeld_aufrufen.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btn_spielfeld_aufrufen.Location = new System.Drawing.Point(510, 286);
+            this.btn_spielfeld_aufrufen.Location = new System.Drawing.Point(680, 352);
+            this.btn_spielfeld_aufrufen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_spielfeld_aufrufen.Name = "btn_spielfeld_aufrufen";
-            this.btn_spielfeld_aufrufen.Size = new System.Drawing.Size(121, 23);
+            this.btn_spielfeld_aufrufen.Size = new System.Drawing.Size(161, 28);
             this.btn_spielfeld_aufrufen.TabIndex = 14;
             this.btn_spielfeld_aufrufen.Text = "Spielfeld aufrufen";
             this.btn_spielfeld_aufrufen.UseVisualStyleBackColor = true;
@@ -225,9 +240,10 @@ namespace Game_of_Life_Win_Form
             // 
             this.btn_start_game.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btn_start_game.Enabled = false;
-            this.btn_start_game.Location = new System.Drawing.Point(393, 395);
+            this.btn_start_game.Location = new System.Drawing.Point(524, 486);
+            this.btn_start_game.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_start_game.Name = "btn_start_game";
-            this.btn_start_game.Size = new System.Drawing.Size(121, 23);
+            this.btn_start_game.Size = new System.Drawing.Size(161, 28);
             this.btn_start_game.TabIndex = 16;
             this.btn_start_game.Text = "Start";
             this.btn_start_game.UseVisualStyleBackColor = true;
@@ -238,9 +254,10 @@ namespace Game_of_Life_Win_Form
             this.Label_wrong_input.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Label_wrong_input.AutoSize = true;
             this.Label_wrong_input.ForeColor = System.Drawing.Color.Red;
-            this.Label_wrong_input.Location = new System.Drawing.Point(130, 146);
+            this.Label_wrong_input.Location = new System.Drawing.Point(173, 180);
+            this.Label_wrong_input.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label_wrong_input.Name = "Label_wrong_input";
-            this.Label_wrong_input.Size = new System.Drawing.Size(147, 13);
+            this.Label_wrong_input.Size = new System.Drawing.Size(196, 17);
             this.Label_wrong_input.TabIndex = 17;
             this.Label_wrong_input.Text = "Nur natürliche Zahlen erlaubt!";
             this.Label_wrong_input.Visible = false;
@@ -251,9 +268,10 @@ namespace Game_of_Life_Win_Form
             this.Label_input_confirmed.AutoSize = true;
             this.Label_input_confirmed.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label_input_confirmed.ForeColor = System.Drawing.Color.Red;
-            this.Label_input_confirmed.Location = new System.Drawing.Point(73, 207);
+            this.Label_input_confirmed.Location = new System.Drawing.Point(97, 255);
+            this.Label_input_confirmed.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label_input_confirmed.Name = "Label_input_confirmed";
-            this.Label_input_confirmed.Size = new System.Drawing.Size(96, 16);
+            this.Label_input_confirmed.Size = new System.Drawing.Size(117, 20);
             this.Label_input_confirmed.TabIndex = 18;
             this.Label_input_confirmed.Text = "Gespeichert!";
             this.Label_input_confirmed.Visible = false;
@@ -264,9 +282,10 @@ namespace Game_of_Life_Win_Form
             this.Label_random_load.AutoSize = true;
             this.Label_random_load.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label_random_load.ForeColor = System.Drawing.Color.Red;
-            this.Label_random_load.Location = new System.Drawing.Point(158, 322);
+            this.Label_random_load.Location = new System.Drawing.Point(211, 396);
+            this.Label_random_load.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label_random_load.Name = "Label_random_load";
-            this.Label_random_load.Size = new System.Drawing.Size(54, 16);
+            this.Label_random_load.Size = new System.Drawing.Size(67, 20);
             this.Label_random_load.TabIndex = 19;
             this.Label_random_load.Text = "Lädt ...";
             this.Label_random_load.Visible = false;
@@ -277,9 +296,10 @@ namespace Game_of_Life_Win_Form
             this.Label_loading_done.AutoSize = true;
             this.Label_loading_done.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label_loading_done.ForeColor = System.Drawing.Color.Red;
-            this.Label_loading_done.Location = new System.Drawing.Point(158, 322);
+            this.Label_loading_done.Location = new System.Drawing.Point(211, 396);
+            this.Label_loading_done.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label_loading_done.Name = "Label_loading_done";
-            this.Label_loading_done.Size = new System.Drawing.Size(52, 16);
+            this.Label_loading_done.Size = new System.Drawing.Size(64, 20);
             this.Label_loading_done.TabIndex = 20;
             this.Label_loading_done.Text = "Fertig!";
             this.Label_loading_done.Visible = false;
@@ -290,9 +310,10 @@ namespace Game_of_Life_Win_Form
             this.Label_size_load.AutoSize = true;
             this.Label_size_load.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label_size_load.ForeColor = System.Drawing.Color.Red;
-            this.Label_size_load.Location = new System.Drawing.Point(73, 207);
+            this.Label_size_load.Location = new System.Drawing.Point(97, 255);
+            this.Label_size_load.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label_size_load.Name = "Label_size_load";
-            this.Label_size_load.Size = new System.Drawing.Size(54, 16);
+            this.Label_size_load.Size = new System.Drawing.Size(67, 20);
             this.Label_size_load.TabIndex = 1;
             this.Label_size_load.Tag = "";
             this.Label_size_load.Text = "Lädt ...";
@@ -304,18 +325,19 @@ namespace Game_of_Life_Win_Form
             this.Label_matchfield_zero.AutoSize = true;
             this.Label_matchfield_zero.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label_matchfield_zero.ForeColor = System.Drawing.Color.Red;
-            this.Label_matchfield_zero.Location = new System.Drawing.Point(160, 322);
+            this.Label_matchfield_zero.Location = new System.Drawing.Point(213, 396);
+            this.Label_matchfield_zero.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Label_matchfield_zero.Name = "Label_matchfield_zero";
-            this.Label_matchfield_zero.Size = new System.Drawing.Size(157, 16);
+            this.Label_matchfield_zero.Size = new System.Drawing.Size(193, 20);
             this.Label_matchfield_zero.TabIndex = 21;
             this.Label_matchfield_zero.Text = "Das Spielfeld ist leer!";
             this.Label_matchfield_zero.Visible = false;
             // 
             // Menu_newGame
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.Label_matchfield_zero);
             this.Controls.Add(this.Label_size_load);
             this.Controls.Add(this.Label_loading_done);
@@ -339,9 +361,11 @@ namespace Game_of_Life_Win_Form
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_back_to_menu_main);
             this.HelpButton = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Menu_newGame";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Neues Spiel";
+            this.Load += new System.EventHandler(this.Menu_newGame_Load);
             this.VisibleChanged += new System.EventHandler(this.Menu_newGame_VisibleChanged);
             this.ResumeLayout(false);
             this.PerformLayout();

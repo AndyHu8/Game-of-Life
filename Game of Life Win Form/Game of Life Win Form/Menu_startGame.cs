@@ -26,12 +26,12 @@ namespace Game_of_Life_Win_Form
             InitializeComponent();
         }
 
-        public Menu_startGame(int x, int y)
+        public Menu_startGame(bool isCreated)
         {
             InitializeComponent();
 
-            this.x = x;
-            this.y = y;
+            x = Matchfield.X;
+            y = Matchfield.Y;
 
             //Panel_matchfield = Matchfield.CurrentMatchfield;
 
@@ -53,25 +53,25 @@ namespace Game_of_Life_Win_Form
         {
             //currentPanel = Matchfield.CurrentMatchfield;
 
-            Panel_matchfield.Controls.Clear();
-            var cPA = Matchfield.CurrentMatchfield.Controls.Cast<Button>().ToList();
+            //Panel_matchfield.Controls.Clear();
+            //var cPA = Matchfield.CurrentMatchfield.Controls.Cast<Button>().ToList();
 
-            for (var i = 0; i < cPA.Count; i++)
-            {
-                var cell = new Tools().Btn_cell;
-
-                cell.BackColor = cPA[i].BackColor;
-                cell.Location = cPA[i].Location;
-                cell.Size = cPA[i].Size;
-
-                Panel_matchfield.Controls.Add(cell);
-                //Thread.Sleep(1);
-            }
-
-            //currentPanel.Controls.Cast<Button>().ToList().ForEach(x =>
+            //for (var i = 0; i < cPA.Count; i++)
             //{
-            //    Panel_matchfield.Controls.Add(x);
-            //});
+            //    var cell = new Tools().Btn_cell;
+
+            //    cell.BackColor = cPA[i].BackColor;
+            //    cell.Location = cPA[i].Location;
+            //    cell.Size = cPA[i].Size;
+
+            //    Panel_matchfield.Controls.Add(cell);
+            //    //Thread.Sleep(1);
+            //}
+
+            Matchfield.CurrentMatchfield.Controls.Cast<Button>().ToList().ForEach(x =>
+            {
+                Panel_matchfield.Controls.Add(x);
+            });
 
             //Matchfield.CurrentMatchfield = currentPanel;
         }
@@ -209,13 +209,13 @@ namespace Game_of_Life_Win_Form
                 isRunning = true;
             }
 
-            var nextGen = buttonArray;
+            var cells = buttonArray;
 
             while (isRunning)
             {
-                nextGen = GameLogic(nextGen);
+                var nextGen = GameLogic(cells);
                 RefreshGrid(nextGen);
-                await Task.Delay(1);
+                await Delay();
             }
         }
 
@@ -247,9 +247,47 @@ namespace Game_of_Life_Win_Form
         {
             speed = Math.Pow(0.5, trackBar_speed.Value - (trackBar_speed.Maximum + trackBar_speed.Minimum) / 2);
             modDelay = delay * speed;
-            Label_speed_value.Text = (modDelay / 1000.0).ToString() + " s\ndelay";
+            Label_speed_value.Text = modDelay < 1 ? "Max speed" : (modDelay / 1000.0).ToString() + " s\ndelay";
 
             await Task.Delay(1);
+        }
+
+        private void ResizeCells()
+        {
+            var k = 0;
+
+            for (var i = 0; i < Matchfield.Y; i++)
+            {
+                for (var j = 0; j < Matchfield.X; j++)
+                {
+                    var btn = Panel_matchfield.Controls[k];
+
+                    btn.Size = new Size(Panel_matchfield.Height / Matchfield.Y, Panel_matchfield.Height / Matchfield.Y);
+                    btn.Location = new Point(j * btn.Width, i * btn.Height);
+
+                    k++;
+                }
+            }
+        }
+
+        private void Menu_startGame_Resize(object sender, EventArgs e)
+        {
+            ResizeCells();
+        }
+
+        private void Menu_startGame_ResizeBegin(object sender, EventArgs e)
+        {
+            ResizeCells();
+        }
+
+        private void Menu_startGame_ResizeEnd(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Menu_startGame_Load(object sender, EventArgs e)
+        {
+            ResizeCells();
         }
     }
 }

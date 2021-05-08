@@ -101,8 +101,8 @@ namespace Game_of_Life_Win_Form
 
         private void btn_start_game_Click(object sender, EventArgs e)
         {
-            if (Menu_startGame == null) btn_start_game.Enabled = false;
-            OpenForm(Menu_startGame = new Menu_startGame(x_number, y_number), Menu_newGame = this);
+            //if (Menu_startGame == null) btn_start_game.Enabled = false;
+            OpenForm(Menu_startGame = new Menu_startGame(true), Menu_newGame = this);
         }
 
         private void X_Input_Leave(object sender, EventArgs e)
@@ -182,6 +182,11 @@ namespace Game_of_Life_Win_Form
         private void btn_zellen_zufall_MouseDown(object sender, MouseEventArgs e)
         {
             Label_random_load.Visible = true;
+        }
+
+        private void Menu_newGame_Load(object sender, EventArgs e)
+        {
+            if (Menu_startGame == null) btn_start_game.Enabled = false;
         }
     }
 }

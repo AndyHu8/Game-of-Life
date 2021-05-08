@@ -12,8 +12,9 @@ namespace Game_of_Life_Win_Form
 {
     public partial class Matchfield : Menuing
     {
-        private int x;
-        private int y;
+        public int X { get; set; }
+        public int Y { get; set; }
+
         public static Panel CurrentMatchfield { get { return Matchfield.Panel_matchfield; } set { } }
 
         public Matchfield()
@@ -25,14 +26,10 @@ namespace Game_of_Life_Win_Form
         {
             InitializeComponent();
 
-            this.x = x;
-            this.y = y;
+            this.X = x;
+            this.Y = y;
 
-            //var btn_cell = RepositionButtons(x, y, new Tools().Btn_cell);
-            var btn_cell = CreateField();
-
-            Panel_matchfield.HorizontalScroll.SmallChange = btn_cell.Width;
-            Panel_matchfield.VerticalScroll.SmallChange = btn_cell.Height;
+            CreateField();
         }
 
         private void Matchfield_Resize(object sender, EventArgs e)
@@ -90,19 +87,19 @@ namespace Game_of_Life_Win_Form
             return btn;
         }
 
-        private Button CreateField()
+        public Button CreateField()
         {
             Panel_matchfield.Controls.Clear();
 
             var btn = new Tools().Btn_cell;
 
-            for (var i = 0; i < y; i++)
+            for (var i = 0; i < Y; i++)
             {
-                for (var j = 0; j < x; j++)
+                for (var j = 0; j < X; j++)
                 {
                     btn = new Tools().Btn_cell;
 
-                    btn.Size = new Size(Panel_matchfield.MaximumSize.Height / y, Panel_matchfield.MaximumSize.Height / y);
+                    btn.Size = new Size(Panel_matchfield.Height / Y, Panel_matchfield.Height / Y);
                     btn.Location = new Point(j * btn.Width, i * btn.Height);
 
                     Panel_matchfield.Controls.Add(btn);
@@ -112,9 +109,38 @@ namespace Game_of_Life_Win_Form
             return btn;
         }
 
+        private void ResizeCells()
+        {
+            var k = 0;
+
+            for (var i = 0; i < Y; i++)
+            {
+                for (var j = 0; j < X; j++)
+                {
+                    var btn = Panel_matchfield.Controls[k];
+
+                    btn.Size = new Size(Panel_matchfield.Height / Y, Panel_matchfield.Height / Y);
+                    btn.Location = new Point(j * btn.Width, i * btn.Height);
+
+                    k++;
+                }
+            }
+        }
+
         private void Matchfield_Load(object sender, EventArgs e)
         {
+            ResizeCells();
+            //Refresh();
+        }
 
+        private void Matchfield_SizeChanged(object sender, EventArgs e)
+        {
+            ResizeCells();
+        }
+
+        private void Panel_matchfield_Paint(object sender, PaintEventArgs e)
+        {
+            ResizeCells();
         }
     }
 }
