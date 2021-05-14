@@ -39,7 +39,8 @@ namespace Game_of_Life_Win_Form
 
             buttonArray = CreateButtonArray2Dim();
 
-            trackBar_speed.Value = (trackBar_speed.Maximum + trackBar_speed.Minimum) / 2;
+            trackBar_speed.Value = 4;
+            trackBar_speed_ValueChanged(null, null);
 
             //foreach (var button in Panel_matchfield.Controls.Cast<Button>())
             //{
@@ -209,11 +210,11 @@ namespace Game_of_Life_Win_Form
                 isRunning = true;
             }
 
-            var cells = buttonArray;
+            var nextGen = buttonArray;
 
             while (isRunning)
             {
-                var nextGen = GameLogic(cells);
+                nextGen = GameLogic(nextGen);
                 RefreshGrid(nextGen);
                 await Delay();
             }
@@ -227,7 +228,7 @@ namespace Game_of_Life_Win_Form
         private void Btn_back_to_menu_main_Click(object sender, EventArgs e)
         {
             Menu_newGame = new Menu_newGame();
-            OpenForm(Menu_main, Menu_startGame = this);
+            OpenForm(new Menu_main(), Menu_startGame = this);
         }
 
         private void Btn_resume_MouseDown(object sender, MouseEventArgs e)
@@ -237,17 +238,15 @@ namespace Game_of_Life_Win_Form
 
         private void Btn_steps_Click(object sender, EventArgs e)
         {
-            var cells = buttonArray;
-
-            cells = GameLogic(cells);
-            RefreshGrid(cells);
+            buttonArray = GameLogic(buttonArray);
+            RefreshGrid(buttonArray);
         }
 
         private async void trackBar_speed_ValueChanged(object sender, EventArgs e)
         {
-            speed = Math.Pow(0.5, trackBar_speed.Value - (trackBar_speed.Maximum + trackBar_speed.Minimum) / 2);
-            modDelay = delay * speed;
-            Label_speed_value.Text = modDelay < 1 ? "Max speed" : (modDelay / 1000.0).ToString() + " s\ndelay";
+            speed = (trackBar_speed.Value) * 0.25;
+            modDelay = delay / speed;
+            Label_speed_value.Text = (speed).ToString() + "x\nspeed";
 
             await Task.Delay(1);
         }
@@ -255,14 +254,15 @@ namespace Game_of_Life_Win_Form
         private void ResizeCells()
         {
             var k = 0;
+            var dim = Panel_matchfield.Height / y < Panel_matchfield.Width / x ? Panel_matchfield.Height / y : Panel_matchfield.Width / x;
 
-            for (var i = 0; i < Matchfield.Y; i++)
+            for (var i = 0; i < y; i++)
             {
-                for (var j = 0; j < Matchfield.X; j++)
+                for (var j = 0; j < x; j++)
                 {
                     var btn = Panel_matchfield.Controls[k];
 
-                    btn.Size = new Size(Panel_matchfield.Height / Matchfield.Y, Panel_matchfield.Height / Matchfield.Y);
+                    btn.Size = new Size(dim, dim);
                     btn.Location = new Point(j * btn.Width, i * btn.Height);
 
                     k++;
@@ -270,22 +270,17 @@ namespace Game_of_Life_Win_Form
             }
         }
 
+        private void Menu_startGame_Load(object sender, EventArgs e)
+        {
+            ResizeCells();
+        }
+
         private void Menu_startGame_Resize(object sender, EventArgs e)
         {
             ResizeCells();
         }
 
-        private void Menu_startGame_ResizeBegin(object sender, EventArgs e)
-        {
-            ResizeCells();
-        }
-
         private void Menu_startGame_ResizeEnd(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Menu_startGame_Load(object sender, EventArgs e)
         {
             ResizeCells();
         }

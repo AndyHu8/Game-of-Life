@@ -47,19 +47,19 @@ namespace Game_of_Life_Win_Form
             this.Panel_matchfield.AutoScroll = true;
             this.Panel_matchfield.BackColor = System.Drawing.Color.Transparent;
             this.Panel_matchfield.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Panel_matchfield.Location = new System.Drawing.Point(12, 11);
+            this.Panel_matchfield.Location = new System.Drawing.Point(9, 9);
             this.Panel_matchfield.Margin = new System.Windows.Forms.Padding(0);
             this.Panel_matchfield.Name = "Panel_matchfield";
-            this.Panel_matchfield.Size = new System.Drawing.Size(1042, 382);
+            this.Panel_matchfield.Size = new System.Drawing.Size(782, 311);
             this.Panel_matchfield.TabIndex = 3;
             // 
             // Btn_resume
             // 
             this.Btn_resume.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.Btn_resume.Location = new System.Drawing.Point(281, 484);
-            this.Btn_resume.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_resume.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Btn_resume.Location = new System.Drawing.Point(211, 393);
             this.Btn_resume.Name = "Btn_resume";
-            this.Btn_resume.Size = new System.Drawing.Size(100, 28);
+            this.Btn_resume.Size = new System.Drawing.Size(75, 23);
             this.Btn_resume.TabIndex = 4;
             this.Btn_resume.Text = "Fortsetzen";
             this.Btn_resume.UseVisualStyleBackColor = true;
@@ -69,11 +69,10 @@ namespace Game_of_Life_Win_Form
             // Btn_back_to_menu_main
             // 
             this.Btn_back_to_menu_main.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.Btn_back_to_menu_main.AutoSize = true;
-            this.Btn_back_to_menu_main.Location = new System.Drawing.Point(601, 484);
-            this.Btn_back_to_menu_main.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_back_to_menu_main.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Btn_back_to_menu_main.Location = new System.Drawing.Point(451, 393);
             this.Btn_back_to_menu_main.Name = "Btn_back_to_menu_main";
-            this.Btn_back_to_menu_main.Size = new System.Drawing.Size(175, 28);
+            this.Btn_back_to_menu_main.Size = new System.Drawing.Size(131, 23);
             this.Btn_back_to_menu_main.TabIndex = 5;
             this.Btn_back_to_menu_main.Text = "Zurück zum Hauptmenü";
             this.Btn_back_to_menu_main.UseVisualStyleBackColor = true;
@@ -82,10 +81,10 @@ namespace Game_of_Life_Win_Form
             // Btn_steps
             // 
             this.Btn_steps.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.Btn_steps.Location = new System.Drawing.Point(389, 484);
-            this.Btn_steps.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_steps.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.Btn_steps.Location = new System.Drawing.Point(292, 393);
             this.Btn_steps.Name = "Btn_steps";
-            this.Btn_steps.Size = new System.Drawing.Size(100, 28);
+            this.Btn_steps.Size = new System.Drawing.Size(75, 23);
             this.Btn_steps.TabIndex = 6;
             this.Btn_steps.Text = "Schritt";
             this.Btn_steps.UseVisualStyleBackColor = true;
@@ -95,14 +94,13 @@ namespace Game_of_Life_Win_Form
             // 
             this.trackBar_speed.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.trackBar_speed.Cursor = System.Windows.Forms.Cursors.Default;
-            this.trackBar_speed.Location = new System.Drawing.Point(65, 469);
-            this.trackBar_speed.Margin = new System.Windows.Forms.Padding(4);
-            this.trackBar_speed.Maximum = 19;
+            this.trackBar_speed.Location = new System.Drawing.Point(49, 381);
+            this.trackBar_speed.Maximum = 20;
             this.trackBar_speed.Minimum = 1;
             this.trackBar_speed.Name = "trackBar_speed";
-            this.trackBar_speed.Size = new System.Drawing.Size(208, 56);
+            this.trackBar_speed.Size = new System.Drawing.Size(156, 45);
             this.trackBar_speed.TabIndex = 7;
-            this.trackBar_speed.Value = 1;
+            this.trackBar_speed.Value = 4;
             this.trackBar_speed.ValueChanged += new System.EventHandler(this.trackBar_speed_ValueChanged);
             // 
             // Label_speed
@@ -110,10 +108,9 @@ namespace Game_of_Life_Win_Form
             this.Label_speed.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.Label_speed.AutoSize = true;
             this.Label_speed.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_speed.Location = new System.Drawing.Point(103, 446);
-            this.Label_speed.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Label_speed.Location = new System.Drawing.Point(77, 362);
             this.Label_speed.Name = "Label_speed";
-            this.Label_speed.Size = new System.Drawing.Size(131, 20);
+            this.Label_speed.Size = new System.Drawing.Size(106, 16);
             this.Label_speed.TabIndex = 8;
             this.Label_speed.Text = "Geschwindigkeit";
             // 
@@ -122,19 +119,18 @@ namespace Game_of_Life_Win_Form
             this.Label_speed_value.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.Label_speed_value.AutoSize = true;
             this.Label_speed_value.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Label_speed_value.Location = new System.Drawing.Point(137, 505);
-            this.Label_speed_value.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Label_speed_value.Location = new System.Drawing.Point(103, 410);
             this.Label_speed_value.Name = "Label_speed_value";
-            this.Label_speed_value.Size = new System.Drawing.Size(54, 20);
+            this.Label_speed_value.Size = new System.Drawing.Size(47, 16);
             this.Label_speed_value.TabIndex = 9;
             this.Label_speed_value.Text = "debug";
             this.Label_speed_value.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Menu_startGame
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.Label_speed_value);
             this.Controls.Add(this.Label_speed);
             this.Controls.Add(this.trackBar_speed);
@@ -142,12 +138,11 @@ namespace Game_of_Life_Win_Form
             this.Controls.Add(this.Btn_back_to_menu_main);
             this.Controls.Add(this.Btn_resume);
             this.Controls.Add(this.Panel_matchfield);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Menu_startGame";
             this.Text = "Menu_startGame";
             this.Load += new System.EventHandler(this.Menu_startGame_Load);
-            this.ResizeBegin += new System.EventHandler(this.Menu_startGame_ResizeBegin);
             this.ResizeEnd += new System.EventHandler(this.Menu_startGame_ResizeEnd);
+            this.Resize += new System.EventHandler(this.Menu_startGame_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.trackBar_speed)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

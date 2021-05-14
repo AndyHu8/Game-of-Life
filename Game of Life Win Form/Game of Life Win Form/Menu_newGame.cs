@@ -54,6 +54,8 @@ namespace Game_of_Life_Win_Form
 
             Matchfield = new Matchfield(x_number, y_number);
             btn_start_game.Enabled = true;
+            btn_spielfeld_aufrufen.Enabled = true;
+            btn_zellen_zufall.Enabled = true;
 
             Label_size_load.Visible = false;
             Label_input_confirmed.Visible = true;
@@ -102,6 +104,7 @@ namespace Game_of_Life_Win_Form
         private void btn_start_game_Click(object sender, EventArgs e)
         {
             //if (Menu_startGame == null) btn_start_game.Enabled = false;
+            Menu_main.IsLoadGame = true;
             OpenForm(Menu_startGame = new Menu_startGame(true), Menu_newGame = this);
         }
 
@@ -186,7 +189,9 @@ namespace Game_of_Life_Win_Form
 
         private void Menu_newGame_Load(object sender, EventArgs e)
         {
-            if (Menu_startGame == null) btn_start_game.Enabled = false;
+            btn_spielfeld_aufrufen.Enabled = false;
+            btn_start_game.Enabled = false;
+            btn_zellen_zufall.Enabled = false;
         }
     }
 }

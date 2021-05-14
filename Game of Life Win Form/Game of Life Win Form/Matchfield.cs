@@ -32,17 +32,6 @@ namespace Game_of_Life_Win_Form
             CreateField();
         }
 
-        private void Matchfield_Resize(object sender, EventArgs e)
-        {
-            //var width = Width - 34;
-            //Panel_matchfield.Width = width;
-            //Panel_matchfield.Height = Height - 178;
-            //Btn_back.Width = width;
-            //Btn_reset.Width = width;
-
-            //RepositionButtons(x, y, null);
-        }
-
         private void Btn_back_Click(object sender, EventArgs e)
         {
             OpenForm(Menu_newGame, Matchfield = this);
@@ -112,6 +101,7 @@ namespace Game_of_Life_Win_Form
         private void ResizeCells()
         {
             var k = 0;
+            var dim = Panel_matchfield.Height / Y < Panel_matchfield.Width / X ? Panel_matchfield.Height / Y : Panel_matchfield.Width / X;
 
             for (var i = 0; i < Y; i++)
             {
@@ -119,7 +109,7 @@ namespace Game_of_Life_Win_Form
                 {
                     var btn = Panel_matchfield.Controls[k];
 
-                    btn.Size = new Size(Panel_matchfield.Height / Y, Panel_matchfield.Height / Y);
+                    btn.Size = new Size(dim, dim);
                     btn.Location = new Point(j * btn.Width, i * btn.Height);
 
                     k++;
@@ -130,15 +120,14 @@ namespace Game_of_Life_Win_Form
         private void Matchfield_Load(object sender, EventArgs e)
         {
             ResizeCells();
-            //Refresh();
         }
 
-        private void Matchfield_SizeChanged(object sender, EventArgs e)
+        private void Matchfield_Resize(object sender, EventArgs e)
         {
             ResizeCells();
         }
 
-        private void Panel_matchfield_Paint(object sender, PaintEventArgs e)
+        private void Matchfield_ResizeEnd(object sender, EventArgs e)
         {
             ResizeCells();
         }

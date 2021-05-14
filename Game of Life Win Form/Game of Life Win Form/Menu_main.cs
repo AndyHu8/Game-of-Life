@@ -12,6 +12,8 @@ namespace Game_of_Life_Win_Form
 {
     public partial class Menu_main : Menuing
     {
+        public static bool IsLoadGame { get; set; }
+
         public Menu_main()
         {
             InitializeComponent();
@@ -30,14 +32,13 @@ namespace Game_of_Life_Win_Form
 
         private void btn_load_game_Click(object sender, EventArgs e)
         {
-            if (Menu_startGame != null) OpenForm(Menu_startGame, Menu_main = this);
+            if (IsLoadGame) OpenForm(Menu_startGame, Menu_main = this);
             else Label_no_existing_game.Visible = true;
         }
 
         private void Menu_main_Load(object sender, EventArgs e)
         {
-            if (Menu_startGame != null) btn_load_game.Enabled = true;
-            else btn_load_game.Enabled = false;
+            btn_load_game.Enabled = IsLoadGame;
         }
     }
 }
