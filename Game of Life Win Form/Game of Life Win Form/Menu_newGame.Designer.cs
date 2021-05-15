@@ -239,11 +239,11 @@ namespace Game_of_Life_Win_Form
             this.Label_wrong_input.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Label_wrong_input.AutoSize = true;
             this.Label_wrong_input.ForeColor = System.Drawing.Color.Red;
-            this.Label_wrong_input.Location = new System.Drawing.Point(130, 146);
+            this.Label_wrong_input.Location = new System.Drawing.Point(73, 146);
             this.Label_wrong_input.Name = "Label_wrong_input";
-            this.Label_wrong_input.Size = new System.Drawing.Size(147, 13);
+            this.Label_wrong_input.Size = new System.Drawing.Size(355, 13);
             this.Label_wrong_input.TabIndex = 17;
-            this.Label_wrong_input.Text = "Nur natürliche Zahlen erlaubt!";
+            this.Label_wrong_input.Text = "Nur natürliche Zahlen erlaubt! Das Limit beträgt 50 für beide Dimensionen!";
             this.Label_wrong_input.Visible = false;
             // 
             // Label_input_confirmed

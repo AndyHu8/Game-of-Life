@@ -27,7 +27,7 @@ namespace Game_of_Life_Win_Form
 
         private void Btn_exit_Click(object sender, EventArgs e)
         {
-            Close();
+            Environment.Exit(0);
         }
 
         private void btn_load_game_Click(object sender, EventArgs e)

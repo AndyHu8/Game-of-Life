@@ -50,7 +50,7 @@ namespace Game_of_Life_Win_Form
             this.Panel_matchfield.Location = new System.Drawing.Point(9, 9);
             this.Panel_matchfield.Margin = new System.Windows.Forms.Padding(0);
             this.Panel_matchfield.Name = "Panel_matchfield";
-            this.Panel_matchfield.Size = new System.Drawing.Size(782, 311);
+            this.Panel_matchfield.Size = new System.Drawing.Size(782, 313);
             this.Panel_matchfield.TabIndex = 0;
             // 
             // matchfieldBindingSource
@@ -59,14 +59,12 @@ namespace Game_of_Life_Win_Form
             // 
             // Btn_back
             // 
-            this.Btn_back.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.Btn_back.AutoSize = true;
-            this.Btn_back.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Btn_back.Location = new System.Drawing.Point(9, 418);
+            this.Btn_back.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.Btn_back.Location = new System.Drawing.Point(0, 402);
             this.Btn_back.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_back.Name = "Btn_back";
-            this.Btn_back.Size = new System.Drawing.Size(51, 23);
+            this.Btn_back.Size = new System.Drawing.Size(800, 48);
             this.Btn_back.TabIndex = 1;
             this.Btn_back.Text = "Zurück";
             this.Btn_back.UseVisualStyleBackColor = true;
@@ -74,14 +72,12 @@ namespace Game_of_Life_Win_Form
             // 
             // Btn_reset
             // 
-            this.Btn_reset.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.Btn_reset.AutoSize = true;
-            this.Btn_reset.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.Btn_reset.Location = new System.Drawing.Point(9, 357);
+            this.Btn_reset.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.Btn_reset.Location = new System.Drawing.Point(0, 354);
             this.Btn_reset.Margin = new System.Windows.Forms.Padding(0);
             this.Btn_reset.Name = "Btn_reset";
-            this.Btn_reset.Size = new System.Drawing.Size(82, 23);
+            this.Btn_reset.Size = new System.Drawing.Size(800, 48);
             this.Btn_reset.TabIndex = 2;
             this.Btn_reset.Text = "Zurücksetzen";
             this.Btn_reset.UseVisualStyleBackColor = true;

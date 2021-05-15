@@ -124,6 +124,8 @@ namespace Game_of_Life_Win_Form
             bool isIntY = int.TryParse(Y_Input.Text, out y_number);
             bool isGreaterZeroX = x_number > 0;
             bool isGreaterZeroY = y_number > 0;
+            bool isOverMaxBoundsX = x_number > 50;
+            bool isOverMaxBoundsY = y_number > 50;
             bool isPreviousX = X_Input.Text == x_previousText;
             bool isPreviousY = Y_Input.Text == y_previousText;
 
@@ -131,7 +133,7 @@ namespace Game_of_Life_Win_Form
 
             if (X_Input.Text != "")
             {
-                if (!isIntX || !isGreaterZeroX)
+                if (!isIntX || !isGreaterZeroX || isOverMaxBoundsX)
                 {
                     Label_wrong_input.Visible = true;
 
@@ -141,7 +143,7 @@ namespace Game_of_Life_Win_Form
 
             if (Y_Input.Text != "")
             {
-                if (!isIntY || !isGreaterZeroY)
+                if (!isIntY || !isGreaterZeroY || isOverMaxBoundsY)
                 {
                     Label_wrong_input.Visible = true;
 

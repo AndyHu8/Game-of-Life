@@ -20,6 +20,7 @@ namespace Game_of_Life_Win_Form
         private double speed = 1;
         private const double delay = 500;
         private double modDelay;
+        private int genCounter = 0;
 
         public Menu_startGame()
         {
@@ -87,6 +88,7 @@ namespace Game_of_Life_Win_Form
             {
                 for (var j = 0; j < x; j++)
                 {
+                    cells[k].Enabled = false;
                     buttonArray[i, j] = cells[k];
 
                     k++;
@@ -191,12 +193,11 @@ namespace Game_of_Life_Win_Form
 
             Panel_matchfield.Refresh();
 
-            Thread.Sleep(TimeSpan.FromMilliseconds(modDelay));
+            //Thread.Sleep(TimeSpan.FromMilliseconds(modDelay));
         }
 
         private async void Btn_resume_Click(object sender, EventArgs e)
         {
-
             if (Btn_resume.Text == "Pause")
             {
                 Btn_resume.Text = "Fortsetzen";
@@ -210,14 +211,39 @@ namespace Game_of_Life_Win_Form
                 isRunning = true;
             }
 
-            var nextGen = buttonArray;
+            var prevGen = buttonArray;
 
             while (isRunning)
             {
-                nextGen = GameLogic(nextGen);
+                var nextGen = GameLogic(prevGen);
+                if (CompareGens(prevGen, nextGen))
+                {
+                    new Menu_gameOver().Show();
+                    Btn_resume.Text = "Fortsetzen";
+                    Btn_steps.Enabled = true;
+                    isRunning = false;
+                    return;
+                }
                 RefreshGrid(nextGen);
+                Label_GenCounter.Text = (++genCounter).ToString();
                 await Delay();
             }
+        }
+
+        private bool CompareGens(Button[,] prev, Button[,] next)
+        {
+            for (var i = 0; i < y; i++)
+            {
+                for (var j = 0; j < x; j++)
+                {
+                    if (prev[i, j].BackColor != next[i, j].BackColor)
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
         }
 
         private async Task Delay()
@@ -238,15 +264,21 @@ namespace Game_of_Life_Win_Form
 
         private void Btn_steps_Click(object sender, EventArgs e)
         {
-            buttonArray = GameLogic(buttonArray);
-            RefreshGrid(buttonArray);
+            var nextGen = GameLogic(buttonArray);
+            RefreshGrid(nextGen);
+            if (CompareGens(buttonArray, nextGen))
+            {
+                new Menu_gameOver().Show();
+                return;
+            }
+            Label_GenCounter.Text = (++genCounter).ToString();
         }
 
         private async void trackBar_speed_ValueChanged(object sender, EventArgs e)
         {
             speed = (trackBar_speed.Value) * 0.25;
             modDelay = delay / speed;
-            Label_speed_value.Text = (speed).ToString() + "x\nspeed";
+            Label_speed_value.Text = (speed).ToString() + "x";
 
             await Task.Delay(1);
         }

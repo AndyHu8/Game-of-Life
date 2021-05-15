@@ -59,6 +59,12 @@
     <Compile Include="Menuing.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Menu_gameOver.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu_gameOver.Designer.cs">
+      <DependentUpon>Menu_gameOver.cs</DependentUpon>
+    </Compile>
     <Compile Include="Menu_main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +93,9 @@
     </Compile>
     <EmbeddedResource Include="Matchfield.resx">
       <DependentUpon>Matchfield.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menu_gameOver.resx">
+      <DependentUpon>Menu_gameOver.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menu_main.resx">
       <DependentUpon>Menu_main.cs</DependentUpon>
