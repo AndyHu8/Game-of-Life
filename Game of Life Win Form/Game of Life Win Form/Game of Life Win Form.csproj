@@ -132,11 +132,5 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\UnitTestProjectGoL\UnitTestProjectGoL.csproj">
-      <Project>{24546ab8-6687-4541-85b2-ee806e7bf981}</Project>
-      <Name>UnitTestProjectGoL</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

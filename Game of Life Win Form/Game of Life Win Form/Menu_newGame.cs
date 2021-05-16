@@ -168,7 +168,7 @@ namespace Game_of_Life_Win_Form
             return true;
         }
 
-        private bool Input_validationZumTest(string X_InputText, string Y_InputText)
+        public bool Input_validationZumTest(string X_InputText, string Y_InputText)
         {
             bool isIntX = int.TryParse(X_InputText, out x_number);
             bool isIntY = int.TryParse(Y_InputText, out y_number);
