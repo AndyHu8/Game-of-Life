@@ -85,12 +85,6 @@ namespace Game_of_Life_Win_Form
 
                 Thread.Sleep(1);
             }
-            //Matchfield.CurrentMatchfield.Controls.Cast<Button>().ToList().ForEach((x) =>
-            //{
-            //    var ran = new Random().Next(0, 2);
-            //    x.BackColor = ran == 0 ? Color.Red : Color.Transparent;
-            //    Thread.Sleep(TimeSpan.FromMilliseconds(0.5));
-            //});
 
             Label_random_load.Visible = false;
             Label_loading_done.Visible = true;
@@ -103,7 +97,6 @@ namespace Game_of_Life_Win_Form
 
         private void btn_start_game_Click(object sender, EventArgs e)
         {
-            //if (Menu_startGame == null) btn_start_game.Enabled = false;
             Menu_main.IsLoadGame = true;
             OpenForm(Menu_startGame = new Menu_startGame(true), Menu_newGame = this);
         }

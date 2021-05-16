@@ -192,8 +192,6 @@ namespace Game_of_Life_Win_Form
             }
 
             Panel_matchfield.Refresh();
-
-            //Thread.Sleep(TimeSpan.FromMilliseconds(modDelay));
         }
 
         private async void Btn_resume_Click(object sender, EventArgs e)
