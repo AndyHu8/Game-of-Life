@@ -168,6 +168,56 @@ namespace Game_of_Life_Win_Form
             return true;
         }
 
+        private bool Input_validationZumTest(string X_InputText, string Y_InputText)
+        {
+            bool isIntX = int.TryParse(X_InputText, out x_number);
+            bool isIntY = int.TryParse(Y_InputText, out y_number);
+            bool isGreaterZeroX = x_number > 0;
+            bool isGreaterZeroY = y_number > 0;
+            bool isOverMaxBoundsX = x_number > 50;
+            bool isOverMaxBoundsY = y_number > 50;
+            bool isPreviousX = X_InputText == x_previousText;
+            bool isPreviousY = Y_InputText == y_previousText;
+
+            Label_wrong_input.Visible = false;
+
+            if (X_InputText != "")
+            {
+                if (!isIntX || !isGreaterZeroX || isOverMaxBoundsX)
+                {
+                    Label_wrong_input.Visible = true;
+
+                    return false;
+                }
+            }
+
+            if (Y_InputText != "")
+            {
+                if (!isIntY || !isGreaterZeroY || isOverMaxBoundsY)
+                {
+                    Label_wrong_input.Visible = true;
+
+                    return false;
+                }
+            }
+
+            if (X_InputText == "" || Y_InputText == "")
+            {
+                Label_wrong_input.Visible = false;
+
+                return false;
+            }
+
+            if (isPreviousX && isPreviousY)
+            {
+                Label_wrong_input.Visible = false;
+
+                return false;
+            }
+
+            return true;
+        }
+
         private void btn_eingaben_uebernehmen_EnabledChanged(object sender, EventArgs e)
         {
             Label_input_confirmed.Visible = false;
