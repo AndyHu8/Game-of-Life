@@ -10,15 +10,16 @@ namespace Game_of_Life_Win_Form
 {
     public class Menuing : Form
     {
-        public static Form CurrentForm { get; set; }
-        public static Size PreviousSize { get; set; }
+
+        public static Menu_main Menu_main = new Menu_main();
+        public static Menu_newGame Menu_newGame = new Menu_newGame();
+        public static Matchfield Matchfield = new Matchfield();
+        public static Menu_startGame Menu_startGame = new Menu_startGame();
 
         public static void OpenForm(Form newForm, Form oldForm)
         {
-            CurrentForm = CurrentForm != newForm ? newForm : CurrentForm;
-            CurrentForm.Location = oldForm.Location;
-            CurrentForm.StartPosition = FormStartPosition.Manual;
-            CurrentForm.Show();
+            newForm.WindowState = oldForm.WindowState;
+            newForm.Show();
             oldForm.Hide();
         }
 
@@ -26,8 +27,8 @@ namespace Game_of_Life_Win_Form
         //{
         //    var components = CurrentForm.Controls;
 
-        //    var x_offset = (CurrentForm.Size.Width - PreviousSize.Width) / 2;
-        //    var y_offset = (CurrentForm.Size.Height - PreviousSize.Height) / 2;
+        //    var x_offset = (CurrentForm.Size.Width - PreviousForm.Size.Width) / 2;
+        //    var y_offset = (CurrentForm.Size.Height - PreviousForm.Size.Height) / 2;
 
         //    foreach (var component in components)
         //    {
@@ -38,6 +39,9 @@ namespace Game_of_Life_Win_Form
         //                break;
         //            case Label label:
         //                //label.Location = new Point(label.Location.X + x_offset, label.Location.Y + y_offset);
+        //                break;
+        //            case Panel panel:
+        //                panel.Location = new Point(panel.Location.X + x_offset, panel.Location.Y + y_offset);
         //                break;
         //            default:
         //                throw new Exception("Not implemented yet");
@@ -50,13 +54,13 @@ namespace Game_of_Life_Win_Form
         //    var form = sender as Form;
         //    CurrentForm = form;
         //    RepositionComponents();
-        //    PreviousSize = form.Size;
+        //    PreviousForm.Size = form.Size;
         //}
 
         //public static void LoadForm(object sender, EventArgs e)
         //{
         //    var form = sender as Form;
-        //    PreviousSize = form.Size;
+        //    PreviousForm.Size = form.Size;
         //}
     }
 }

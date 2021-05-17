@@ -16,7 +16,7 @@ namespace Game_of_Life_Win_Form
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Menu_main());
+            Application.Run(new Menu_main() { WindowState = FormWindowState.Maximized });
         }
 
     }

@@ -32,6 +32,7 @@ namespace Game_of_Life_Win_Form
             this.btn_new_game_menu_newGame = new System.Windows.Forms.Button();
             this.lbl_title = new System.Windows.Forms.Label();
             this.btn_load_game = new System.Windows.Forms.Button();
+            this.Btn_exit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_new_game_menu_newGame
@@ -66,15 +67,28 @@ namespace Game_of_Life_Win_Form
             this.btn_load_game.Text = "Spiel laden";
             this.btn_load_game.UseVisualStyleBackColor = true;
             // 
+            // Btn_exit
+            // 
+            this.Btn_exit.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Btn_exit.Location = new System.Drawing.Point(344, 300);
+            this.Btn_exit.Name = "Btn_exit";
+            this.Btn_exit.Size = new System.Drawing.Size(131, 66);
+            this.Btn_exit.TabIndex = 3;
+            this.Btn_exit.Text = "Beenden";
+            this.Btn_exit.UseVisualStyleBackColor = true;
+            this.Btn_exit.Click += new System.EventHandler(this.Btn_exit_Click);
+            // 
             // Menu_main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Btn_exit);
             this.Controls.Add(this.btn_load_game);
             this.Controls.Add(this.lbl_title);
             this.Controls.Add(this.btn_new_game_menu_newGame);
             this.Name = "Menu_main";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hauptmenü";
             this.ResumeLayout(false);
 
@@ -85,6 +99,7 @@ namespace Game_of_Life_Win_Form
         private System.Windows.Forms.Button btn_new_game_menu_newGame;
         private System.Windows.Forms.Label lbl_title;
         private System.Windows.Forms.Button btn_load_game;
+        private System.Windows.Forms.Button Btn_exit;
     }
 }
 
