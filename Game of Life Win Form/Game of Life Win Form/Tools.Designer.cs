@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.Btn_cell = new System.Windows.Forms.Button();
+            this.Btn_cell_ingame = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Btn_cell
@@ -45,11 +46,23 @@
             this.Btn_cell.UseVisualStyleBackColor = false;
             this.Btn_cell.Click += new System.EventHandler(this.Btn_cell_Click);
             // 
+            // Btn_cell_ingame
+            // 
+            this.Btn_cell_ingame.BackColor = System.Drawing.Color.Transparent;
+            this.Btn_cell_ingame.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.Btn_cell_ingame.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Btn_cell_ingame.Location = new System.Drawing.Point(43, 12);
+            this.Btn_cell_ingame.Name = "Btn_cell_ingame";
+            this.Btn_cell_ingame.Size = new System.Drawing.Size(25, 25);
+            this.Btn_cell_ingame.TabIndex = 1;
+            this.Btn_cell_ingame.UseVisualStyleBackColor = false;
+            // 
             // Tools
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Btn_cell_ingame);
             this.Controls.Add(this.Btn_cell);
             this.Name = "Tools";
             this.Text = "Tools";
@@ -60,5 +73,6 @@
         #endregion
 
         public System.Windows.Forms.Button Btn_cell;
+        public System.Windows.Forms.Button Btn_cell_ingame;
     }
 }

@@ -45,11 +45,12 @@ namespace Game_of_Life_Win_Form
             this.label8 = new System.Windows.Forms.Label();
             this.btn_spielfeld_aufrufen = new System.Windows.Forms.Button();
             this.btn_start_game = new System.Windows.Forms.Button();
-            this.Label_inserted_string = new System.Windows.Forms.Label();
+            this.Label_wrong_input = new System.Windows.Forms.Label();
             this.Label_input_confirmed = new System.Windows.Forms.Label();
             this.Label_random_load = new System.Windows.Forms.Label();
             this.Label_loading_done = new System.Windows.Forms.Label();
             this.Label_size_load = new System.Windows.Forms.Label();
+            this.Label_matchfield_zero = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btn_back_to_menu_main
@@ -212,6 +213,7 @@ namespace Game_of_Life_Win_Form
             // btn_spielfeld_aufrufen
             // 
             this.btn_spielfeld_aufrufen.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btn_spielfeld_aufrufen.Enabled = false;
             this.btn_spielfeld_aufrufen.Location = new System.Drawing.Point(510, 286);
             this.btn_spielfeld_aufrufen.Name = "btn_spielfeld_aufrufen";
             this.btn_spielfeld_aufrufen.Size = new System.Drawing.Size(121, 23);
@@ -223,6 +225,7 @@ namespace Game_of_Life_Win_Form
             // btn_start_game
             // 
             this.btn_start_game.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btn_start_game.Enabled = false;
             this.btn_start_game.Location = new System.Drawing.Point(393, 395);
             this.btn_start_game.Name = "btn_start_game";
             this.btn_start_game.Size = new System.Drawing.Size(121, 23);
@@ -231,17 +234,17 @@ namespace Game_of_Life_Win_Form
             this.btn_start_game.UseVisualStyleBackColor = true;
             this.btn_start_game.Click += new System.EventHandler(this.btn_start_game_Click);
             // 
-            // Label_inserted_string
+            // Label_wrong_input
             // 
-            this.Label_inserted_string.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Label_inserted_string.AutoSize = true;
-            this.Label_inserted_string.ForeColor = System.Drawing.Color.Red;
-            this.Label_inserted_string.Location = new System.Drawing.Point(130, 146);
-            this.Label_inserted_string.Name = "Label_inserted_string";
-            this.Label_inserted_string.Size = new System.Drawing.Size(147, 13);
-            this.Label_inserted_string.TabIndex = 17;
-            this.Label_inserted_string.Text = "Nur natürliche Zahlen erlaubt!";
-            this.Label_inserted_string.Visible = false;
+            this.Label_wrong_input.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Label_wrong_input.AutoSize = true;
+            this.Label_wrong_input.ForeColor = System.Drawing.Color.Red;
+            this.Label_wrong_input.Location = new System.Drawing.Point(73, 146);
+            this.Label_wrong_input.Name = "Label_wrong_input";
+            this.Label_wrong_input.Size = new System.Drawing.Size(355, 13);
+            this.Label_wrong_input.TabIndex = 17;
+            this.Label_wrong_input.Text = "Nur natürliche Zahlen erlaubt! Das Limit beträgt 50 für beide Dimensionen!";
+            this.Label_wrong_input.Visible = false;
             // 
             // Label_input_confirmed
             // 
@@ -296,16 +299,30 @@ namespace Game_of_Life_Win_Form
             this.Label_size_load.Text = "Lädt ...";
             this.Label_size_load.Visible = false;
             // 
+            // Label_matchfield_zero
+            // 
+            this.Label_matchfield_zero.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Label_matchfield_zero.AutoSize = true;
+            this.Label_matchfield_zero.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Label_matchfield_zero.ForeColor = System.Drawing.Color.Red;
+            this.Label_matchfield_zero.Location = new System.Drawing.Point(160, 322);
+            this.Label_matchfield_zero.Name = "Label_matchfield_zero";
+            this.Label_matchfield_zero.Size = new System.Drawing.Size(157, 16);
+            this.Label_matchfield_zero.TabIndex = 21;
+            this.Label_matchfield_zero.Text = "Das Spielfeld ist leer!";
+            this.Label_matchfield_zero.Visible = false;
+            // 
             // Menu_newGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Label_matchfield_zero);
             this.Controls.Add(this.Label_size_load);
             this.Controls.Add(this.Label_loading_done);
             this.Controls.Add(this.Label_random_load);
             this.Controls.Add(this.Label_input_confirmed);
-            this.Controls.Add(this.Label_inserted_string);
+            this.Controls.Add(this.Label_wrong_input);
             this.Controls.Add(this.btn_start_game);
             this.Controls.Add(this.btn_spielfeld_aufrufen);
             this.Controls.Add(this.label8);
@@ -326,6 +343,7 @@ namespace Game_of_Life_Win_Form
             this.Name = "Menu_newGame";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Neues Spiel";
+            this.Load += new System.EventHandler(this.Menu_newGame_Load);
             this.VisibleChanged += new System.EventHandler(this.Menu_newGame_VisibleChanged);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -350,10 +368,11 @@ namespace Game_of_Life_Win_Form
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btn_spielfeld_aufrufen;
         private System.Windows.Forms.Button btn_start_game;
-        private System.Windows.Forms.Label Label_inserted_string;
+        private System.Windows.Forms.Label Label_wrong_input;
         private System.Windows.Forms.Label Label_input_confirmed;
         private System.Windows.Forms.Label Label_random_load;
         private System.Windows.Forms.Label Label_loading_done;
         private System.Windows.Forms.Label Label_size_load;
+        private System.Windows.Forms.Label Label_matchfield_zero;
     }
 }
